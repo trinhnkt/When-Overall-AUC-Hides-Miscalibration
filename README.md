@@ -9,7 +9,7 @@ A protocol paper for Knowledge Tracing on sparse concepts: train-only KC strata,
 
 ## Paper
 
-Named and blind PDFs are **13 pages** each (18 September 2026; IJIET has no page cap; template is binding) in [`sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/`](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/). Extra tables are **Appendix A1–A6** in the main Word/PDF.
+Named and blind PDFs are **13 pages** each (21 September 2026; IJIET has no page cap; template is binding) in [`sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/`](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/). Extra tables are **Appendix A1–A6** in the main Word/PDF.
 
 | Artefact | Path |
 |----------|------|
