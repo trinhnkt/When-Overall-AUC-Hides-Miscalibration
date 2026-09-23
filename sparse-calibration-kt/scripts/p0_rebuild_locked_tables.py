@@ -15,6 +15,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 REV = ROOT / "IJIET_FINAL_REVISION"
+if not REV.is_dir():
+    REV = ROOT
 MAIN_CSV = REV / "analysis" / "summary_4part_bucket.csv"
 XES_CSV = REV / "a2b" / "analysis" / "summary_4part_bucket.csv"
 OFFICIAL = ROOT / "results" / "reports" / "p0_official_simplekt_assist_ece.json"

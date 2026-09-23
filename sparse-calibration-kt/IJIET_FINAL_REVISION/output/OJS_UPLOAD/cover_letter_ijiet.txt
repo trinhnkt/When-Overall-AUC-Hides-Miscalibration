@@ -2,7 +2,7 @@ Cover letter — International Journal of Information and Education Technology
 
 Manuscript: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 Corresponding author: Van-Hau Nguyen (haunv@utehy.edu.vn)
-Date: 21 September 2026
+Date: 23 September 2026
 
 Dear Editor,
 
@@ -35,11 +35,13 @@ decision not to send the paper for peer review. The IJIET submission is
 the sole active version. We can document that decision privately if the
 office requires it.
 
-Data. Public code: https://github.com/trinhnkt/Sparse-Concept-and-Calibration
-Datasets are those released by the original providers. The review zip
-rebuilds the reported tables from frozen summaries; it does not retrain
-models or include raw dumps. Upon acceptance, those review-artifact
-contents will be included in the public repository.
+Data. The GitHub repository is private during review
+(https://github.com/trinhnkt/Sparse-Concept-and-Calibration). Reviewers
+receive only the anonymized zip. Datasets are those released by the
+original providers. The review zip rebuilds the reported tables from
+frozen summaries; it does not retrain models or include raw dumps. Upon
+acceptance, the repository will be made public and those accompanying-
+artifact contents will be included there.
 
 Generative AI. During manuscript preparation the authors used
 AI-assisted writing tools, including ChatGPT, Claude, Google

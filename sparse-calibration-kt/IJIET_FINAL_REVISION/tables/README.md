@@ -1,7 +1,7 @@
 # Numeric tables (copied, not recomputed)
 
 Source of truth remains `analysis/four_partition/` and seed-42 gate artifacts.
-Copies here are for the IJIET package only. Do not edit numbers.
+Copies here are for the review package only. Do not edit numbers.
 
 | File | Role |
 |------|------|

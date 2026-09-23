@@ -21,4 +21,4 @@ This reads `IJIET_FINAL_REVISION/analysis/summary_4part_bucket.csv` (ASSISTments
 6. T-KT is a local Transformer baseline, not published SimpleKT. Official SimpleKT `[4]` on ASSISTments is `results/reports/p0_official_simplekt_assist_ece.json`.
 7. BKT is not a scored baseline (pyBKT 1.4.1 degenerated on ASSISTments seed 42); IRT is the classical reference.
 
-Minimal review artefact: `output/code_for_review_anonymous.zip`.
+Reviewers receive this zip, with `analysis/`, `a2b/`, and `figures/` at the zip root. On disk those trees stay in the living manuscript folder (the prefix used by repo scripts). Do not upload a separate `supplementary.pdf`.

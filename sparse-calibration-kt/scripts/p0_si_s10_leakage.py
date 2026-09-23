@@ -16,6 +16,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 REV = ROOT / "IJIET_FINAL_REVISION"
+if not REV.is_dir():
+    REV = ROOT
 DATA = ROOT / "data" / "processed"
 
 DATASETS = ("assist2012", "junyi", "xes3g5m")

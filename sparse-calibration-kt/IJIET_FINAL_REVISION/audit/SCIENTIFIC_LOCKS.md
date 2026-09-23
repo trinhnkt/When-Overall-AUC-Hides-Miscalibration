@@ -1,13 +1,13 @@
-# Scientific locks (IJIET_FINAL_REVISION)
+# Scientific locks
 
-Copied from the accepted IJIET-21 manuscript. Do not “improve” these in silence.
+Frozen cells for the submission pack. Do not “improve” these in silence.
 
 ## Datasets and models
 
 - Logs: ASSISTments 2012, Junyi Academy, XES3G5M.
 - Main baselines: IRT, DKT, Transformer KT baseline (local implementations). Transformer KT is **not** published SimpleKT `[4]` and is **not** an official checkpoint.
 - Official SimpleKT `[4]` is scored on ASSISTments learner-based AUC/ECE only (four unique partitions). Do not treat T-KT cells as that checkpoint.
-- GKT / CL4KT-style: exploratory, seed 42 / fold 0, ASSISTments only. CL4KT is a protocol adapter.
+- GKT / CL4KT are **not** scored and are not shipped in the review zip.
 
 ## Protocol
 

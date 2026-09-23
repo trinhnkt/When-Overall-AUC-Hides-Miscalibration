@@ -2,7 +2,7 @@
 
 **Journal:** International Journal of Information and Education Technology (www.ijiet.org)  
 **Title:** Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing  
-**Date packed:** 21 September 2026  
+**Date packed:** 23 September 2026  
 **Length:** named **13 pages**, blind **13 pages**. IJIET: no word limit; every table stays in the single Word file (main Tables 1–8 + Appendix A1–A6). Title 20 pt.
 
 This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.  
@@ -37,5 +37,6 @@ C8 (signatures, ≥3 days) and A2 backup venues are for the supervisor, not OJS.
 - Blind PDF has no author names or github.com/trinhnkt
 - Zip excludes identity-bearing draft sources and named Word
 - Reference [19] cites the Junyi Kaggle dump as Chen/Hsieh/Tsai, 2020
+- GitHub repo is **private** during review; do not send reviewers a clone URL
 
-Public repo: https://github.com/trinhnkt/Sparse-Concept-and-Calibration
+Editor-only code URL (not for reviewers): https://github.com/trinhnkt/Sparse-Concept-and-Calibration

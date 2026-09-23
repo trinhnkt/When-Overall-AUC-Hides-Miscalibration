@@ -15,6 +15,9 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
+REV = ROOT / "IJIET_FINAL_REVISION"
+if not REV.is_dir():
+    REV = ROOT
 sys.path.insert(0, str(ROOT))
 from src.calibration_eval import compute_ece  # noqa: E402
 
@@ -116,7 +119,7 @@ def main() -> None:
         if r["delta"] <= 0:
             raise SystemExit(f"ordering flipped: {r}")
 
-    out_csv = ROOT / "IJIET_FINAL_REVISION/analysis/si_threecut_tkt_dkt.csv"
+    out_csv = REV / "analysis" / "si_threecut_tkt_dkt.csv"
     out_csv.parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(rows).to_csv(out_csv, index=False)
 
@@ -157,7 +160,7 @@ Model & Cut grid ($t_0/t_1/t_2$) & Dense ECE & $N$ dense & Sparse ECE & $N$ spar
         r"Official SimpleKT~\cite{liu2023simplekt} is not regrouped here. ",
         "Official SimpleKT is not regrouped here. ",
     )
-    tex_path = ROOT / "IJIET_FINAL_REVISION/supplementary/Table_S7_threecut.tex"
+    tex_path = REV / "supplementary" / "Table_S7_threecut.tex"
     tex_path.write_text(tex, encoding="utf-8")
     summary = ROOT / "results/reports/p0_si_threecut.json"
     summary.write_text(json.dumps(rows, indent=2), encoding="utf-8")
