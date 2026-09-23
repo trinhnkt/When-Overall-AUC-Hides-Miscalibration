@@ -1,15 +1,14 @@
-# IJIET_FINAL_REVISION
+# Manuscript sources
 
-Living IJIET manuscript (named **13 pages**, blind **13 pages**, 21 September 2026).  
-Edit Word in `manuscript/`, then pack `output/OJS_UPLOAD/`.
+Living manuscript (named and anonymized Word/PDF, 13 pages, 21 September 2026).
+Edit Word in `manuscript/`, then pack `output/OJS_UPLOAD/` for the editorial office.
 
-Extra tables are **Appendix A1–A6** in the main file. Do not upload
-`supplementary.pdf`.
+Extra tables are **Appendix A1–A6** in the main file. Do not upload `supplementary.pdf`.
 
 | Path | Role |
 |------|------|
-| `manuscript/` | Named and blind Word |
-| `output/OJS_UPLOAD/` | Files to upload to IJIET OJS |
+| `manuscript/` | Named and anonymized Word |
+| `output/OJS_UPLOAD/` | Files for the journal OJS upload |
 | `analysis/` | Locked numeric artifacts |
 | `audit/SCIENTIFIC_LOCKS.md` | Frozen ECE/FAR/XES cells |
 | `docs/how_to_reproduce.md` | LEVEL A vs Track A |
@@ -19,9 +18,7 @@ Extra tables are **Appendix A1–A6** in the main file. Do not upload
 
 **T-KT** is a local Transformer reference, not published SimpleKT.
 
-Target: named and blind files use the paper title (`manuscript_paths.py`).
+Target: named and anonymized files use the paper title (`manuscript_paths.py`).
 
-## Submit here
-
-OJS files: `output/OJS_UPLOAD/` (see `README_SUBMIT.md` there).  
-Cover: `output/OJS_UPLOAD/cover_letter_ijiet.txt` (21 September 2026).
+Office files: `output/OJS_UPLOAD/` (see `README_SUBMIT.md` there).
+The named file and cover letter are for the editorial office only. Reviewers receive the anonymized PDF and the review zip.

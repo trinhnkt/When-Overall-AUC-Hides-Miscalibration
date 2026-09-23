@@ -1,13 +1,13 @@
 # Experiment package
 
-Code, configs, frozen tables, and the living IJIET manuscript for
+Code, configs, frozen tables, and manuscript sources for
 *Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing*.
 
-Start at the repository root [`README.md`](../README.md).
+Start at the repository root `README.md`.
 
-Living IJIET pack (18 Sep 2026): named 13 pages / blind 13 pages; Appendix A1–A6 in the main file. Do not upload `supplementary.pdf`.
 T-KT is a local Transformer reference, not published SimpleKT.
+Appendix A1–A6 stay in the main manuscript file. Do not upload `supplementary.pdf`.
 
 **LEVEL A** (no retrain): `bash scripts/rebuild_locked_tables.sh`
 
-Locked cells: [`IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`](IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md).
+Locked cells: `IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`.

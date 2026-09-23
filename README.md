@@ -1,26 +1,20 @@
 # Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 
-Khanh-Trinh Nguyen, Tuan Dao Minh, Duong Nguyen Tien, Chi Thanh Nguyen, and Van-Hau Nguyen  
-*International Journal of Information and Education Technology* (IJIET) · **DOI pending**
-
-A protocol paper for Knowledge Tracing on sparse concepts: train-only KC strata, occupancy-aware reporting, ECE/Brier, reliability diagrams, L1–L7 leakage control, and a frozen one-command table rebuild. It is not a new KT architecture and not a classroom trial.
+A protocol for Knowledge Tracing on sparse concepts: train-only KC strata, occupancy-aware reporting, ECE/Brier, reliability diagrams, L1–L7 leakage control, and a frozen one-command table rebuild. It is not a new KT architecture and not a classroom trial.
 
 **T-KT** is a local Transformer reference, not published SimpleKT.
 
-## Paper
+This file is written for double-blind review. It does not name authors, a target journal, or a public code URL. Reviewers receive an anonymized code bundle with the manuscript; do not treat this README as a camera-ready citation.
 
-Named and blind PDFs are **13 pages** each (21 September 2026; IJIET has no page cap; template is binding) in [`sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/`](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/). Extra tables are **Appendix A1–A6** in the main Word/PDF.
+## Manuscript
 
-| Artefact | Path |
-|----------|------|
-| Named PDF | [Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/Reproducible%20Sparse-Concept%20and%20Calibration%20Diagnostics%20for%20Knowledge%20Tracing.pdf) |
-| Blind PDF | […_blind.pdf](sparse-calibration-kt/IJIET_FINAL_REVISION/output/OJS_UPLOAD/Reproducible%20Sparse-Concept%20and%20Calibration%20Diagnostics%20for%20Knowledge%20Tracing_blind.pdf) |
-| Appendix | Tables A1–A6 inside the main PDF (do not upload `supplementary.pdf`) |
-| Locked numbers | [`IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`](sparse-calibration-kt/IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md) |
+The submission uses a named file for the editorial office and a separate anonymized file for reviewers. Appendix Tables A1–A6 stay in the main Word/PDF. Do not upload a separate `supplementary.pdf`.
+
+Locked numeric cells are in `sparse-calibration-kt/IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`.
 
 ## Datasets
 
-Raw logs are **not** shipped. Obtain them from the original providers and place dumps under `sparse-calibration-kt/data/` (see [`data/README.md`](sparse-calibration-kt/data/README.md)):
+Raw logs are **not** shipped. Obtain them from the original providers and place dumps under `sparse-calibration-kt/data/` (see `sparse-calibration-kt/data/README.md`):
 
 1. [ASSISTments 2012](https://sites.google.com/site/assistmentsdata/) — 2012–2013 release with affect
 2. [Junyi Academy Online Learning Activity Dataset](https://www.kaggle.com/datasets/junyiacademy/learning-activity-public-dataset-by-junyi-academy) on Kaggle — **not** Junyi2015 / PSLC DataShop; the operational KC is `ucid`
@@ -36,7 +30,7 @@ pip install -r requirements.txt
 bash scripts/rebuild_locked_tables.sh      # Windows: scripts/rebuild_locked_tables.ps1
 ```
 
-**Track A** retrains local IRT / DKT / T-KT and does **not** recreate those locked cells. See [`how_to_reproduce.md`](sparse-calibration-kt/IJIET_FINAL_REVISION/docs/how_to_reproduce.md).
+**Track A** retrains local IRT / DKT / T-KT and does **not** recreate those locked cells. See `sparse-calibration-kt/IJIET_FINAL_REVISION/docs/how_to_reproduce.md`.
 
 ## Repository layout
 
@@ -46,23 +40,22 @@ bash scripts/rebuild_locked_tables.sh      # Windows: scripts/rebuild_locked_tab
 | `sparse-calibration-kt/scripts/` | LEVEL A rebuild, Track A runners |
 | `sparse-calibration-kt/configs/` | Dataset / model YAML |
 | `sparse-calibration-kt/results/tables/` | Frozen numeric tables |
-| `sparse-calibration-kt/IJIET_FINAL_REVISION/` | Living manuscript, figures, Appendix sources, OJS pack |
+| `sparse-calibration-kt/IJIET_FINAL_REVISION/` | Living manuscript sources, figures, frozen analysis |
 | `sparse-calibration-kt/tests/` | Unit tests |
 
 ## Citation
 
+During review, cite the anonymized accompanying artifact, not a journal article and not a public repository.
+
 ```bibtex
-@article{nguyen2026reproducible,
-  title   = {Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing},
-  author  = {Nguyen, Khanh-Trinh and Dao Minh, Tuan and Nguyen Tien, Duong
-             and Nguyen, Chi Thanh and Nguyen, Van-Hau},
-  journal = {International Journal of Information and Education Technology},
-  year    = {2026},
-  note    = {DOI pending}
+@software{sparse_concept_calibration_kt,
+  title = {Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing},
+  year  = {2026},
+  note  = {Anonymized review artifact}
 }
 ```
 
-Or use [`CITATION.cff`](CITATION.cff).
+A journal name, volume, and DOI should be added only after acceptance.
 
 ## License
 
