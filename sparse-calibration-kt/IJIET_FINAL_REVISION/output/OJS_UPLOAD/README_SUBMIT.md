@@ -9,7 +9,7 @@ This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not
 **T-KT** is a local Transformer reference, not published SimpleKT.
 
 Submission rules (www.ijiet.org): one editable `.doc`/`.pdf` with every figure and
-table embedded; abstract 150–250 words (currently ~203); at most 7 keywords (currently 6);
+table embedded; abstract 150–250 words (currently 231); at most 7 keywords (currently 6);
 double-blind review; AI use disclosed (ChatGPT, Claude, Google Antigravity, Cursor, Grok).
 APC is **800 USD after** acceptance. Authors keep copyright (CC BY 4.0).
 Do not submit through `ijiet.com` — that is a different journal.

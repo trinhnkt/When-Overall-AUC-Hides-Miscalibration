@@ -35,6 +35,9 @@ decision not to send the paper for peer review. The IJIET submission is
 the sole active version. We can document that decision privately if the
 office requires it.
 
+Funding. This work received no specific funding. It is not part of any
+research grant or funded project.
+
 Data. The GitHub repository is private during review
 (https://github.com/trinhnkt/Sparse-Concept-and-Calibration). Reviewers
 receive only the anonymized zip. Datasets are those released by the

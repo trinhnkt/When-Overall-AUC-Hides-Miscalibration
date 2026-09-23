@@ -1,5 +1,5 @@
 Anonymous code bundle for IJIET double-blind review
-Packed: 21 September 2026
+Packed: 23 September 2026 (95 files)
 
 This zip is the reviewer-facing LEVEL A artifact. It does not contain:
 - author names, emails, affiliations, or a public GitHub URL
