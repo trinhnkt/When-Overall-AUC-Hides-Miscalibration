@@ -26,7 +26,7 @@ Frozen cells for the submission pack. Do not “improve” these in silence.
 - Table 8 XES E1 tail mass: **21.5%** (184/854 KCs with \(f_{\mathrm{train}}<100\) on masked a2b fold 0). Obsolete printed **22.5%** was the pre-mask profile.
 - Table 7 (cold-start; formerly Table 8/9) XES very-sparse (same masked a2b series as Table 5): \(N=114\) L; T-KT ECE \(0.184\); DKT ECE \(0.173\). Flag follows the printed four-partition mean (\(100\le N<1000\)). Do not revert to padded \(N=112\) / \(0.183\) / \(0.184\) or flag I/L.
 - Gate \(\tau=0.7\); FAR = \(P(y=0\mid p\ge\tau)\). Seed-42 T-KT FAR 0.196 dense → 0.268 sparse. Primary robustness unit: four unique partitions, mean \(\Delta\)FAR 0.056 (range 0.015–0.087) after averaging seeds 2025/2026 first. Five-run mean 0.047, sd 0.033 (not five independent folds).
-- Locked seed-42 KC-cluster CI **[0.006, 0.138]** from `IJIET_FINAL_REVISION/analysis/c2_fivefold_verdict.txt`. Do not substitute a recomputed CSV CI.
+- Locked seed-42 KC-cluster CI **[0.006, 0.138]** from `manuscript-pack/analysis/c2_fivefold_verdict.txt`. Do not substitute a recomputed CSV CI.
 
 ## Claims that stay off
 

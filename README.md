@@ -10,7 +10,7 @@ This file is written for double-blind review. It does not name authors, a target
 
 The submission uses a named file for the editorial office and a separate anonymized file for reviewers. Appendix Tables A1–A6 stay in the main Word/PDF. Do not upload a separate `supplementary.pdf`.
 
-Locked numeric cells are in `sparse-calibration-kt/IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`.
+Locked numeric cells are in `sparse-calibration-kt/manuscript-pack/audit/SCIENTIFIC_LOCKS.md`.
 
 ## Datasets
 
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 bash scripts/rebuild_locked_tables.sh      # Windows: scripts/rebuild_locked_tables.ps1
 ```
 
-**Track A** retrains local IRT / DKT / T-KT and does **not** recreate those locked cells. See `sparse-calibration-kt/IJIET_FINAL_REVISION/docs/how_to_reproduce.md`.
+**Track A** retrains local IRT / DKT / T-KT and does **not** recreate those locked cells. See `sparse-calibration-kt/manuscript-pack/docs/how_to_reproduce.md`.
 
 ## Repository layout
 
@@ -40,7 +40,7 @@ bash scripts/rebuild_locked_tables.sh      # Windows: scripts/rebuild_locked_tab
 | `sparse-calibration-kt/scripts/` | LEVEL A rebuild, Track A runners |
 | `sparse-calibration-kt/configs/` | Dataset / model YAML |
 | `sparse-calibration-kt/results/tables/` | Frozen numeric tables |
-| `sparse-calibration-kt/IJIET_FINAL_REVISION/` | Living manuscript sources, figures, frozen analysis |
+| `sparse-calibration-kt/manuscript-pack/` | Living manuscript sources, figures, frozen analysis |
 | `sparse-calibration-kt/tests/` | Unit tests |
 
 ## Citation

@@ -2,7 +2,7 @@
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-REV = REPO / "IJIET_FINAL_REVISION"
+REV = Path(__file__).resolve().parents[1]
 A2B = REV / "a2b"
 RAW_KC = REPO / "data" / "raw" / "xes3g5m" / "kc_level"
 TV = RAW_KC / "train_valid_sequences.csv"

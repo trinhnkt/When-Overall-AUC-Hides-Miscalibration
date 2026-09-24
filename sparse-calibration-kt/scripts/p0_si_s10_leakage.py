@@ -15,7 +15,9 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-REV = ROOT / "IJIET_FINAL_REVISION"
+REV = ROOT / "manuscript-pack"
+if not REV.is_dir():
+    REV = ROOT / "IJIET_FINAL_REVISION"
 if not REV.is_dir():
     REV = ROOT
 DATA = ROOT / "data" / "processed"

@@ -10,4 +10,4 @@ Appendix A1–A6 stay in the main manuscript file. Do not upload `supplementary.
 
 **LEVEL A** (no retrain): `bash scripts/rebuild_locked_tables.sh`
 
-Locked cells: `IJIET_FINAL_REVISION/audit/SCIENTIFIC_LOCKS.md`.
+Locked cells: `manuscript-pack/audit/SCIENTIFIC_LOCKS.md`.
