@@ -3,7 +3,7 @@
 
 Settings match TABLE_S1 / baseline_runner.py: batch 64, 50 epochs, Adam 1e-3,
 best validation AUC. IRT: lr 0.01, reg 0.01, 10 epochs, batch 512.
-Writes only under IJIET_FINAL_REVISION/a2b/.
+Writes only under manuscript-pack/a2b/.
 """
 from __future__ import annotations
 

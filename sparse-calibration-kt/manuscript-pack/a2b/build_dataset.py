@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """A2B: flatten XES3G5M with valid masking, preprocess, splits, strata.
 
-Writes only under IJIET_FINAL_REVISION/a2b/. Does not touch historical artifacts.
+Writes only under manuscript-pack/a2b/. Does not touch historical artifacts.
 """
 from __future__ import annotations
 

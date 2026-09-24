@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """A2B remaining pipeline: neural train → eval → A9 → manifest.
 
-Writes only under IJIET_FINAL_REVISION/a2b/ and the revision analysis/audit folders.
+Writes only under manuscript-pack/a2b/ and the revision analysis/audit folders.
 """
 from __future__ import annotations
 
