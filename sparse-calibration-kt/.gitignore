@@ -60,6 +60,8 @@ manuscript-pack/_vong5_*.py
 manuscript-pack/output/*
 !manuscript-pack/output/OJS_UPLOAD/
 !manuscript-pack/output/OJS_UPLOAD/**
+!manuscript-pack/output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf
+!manuscript-pack/output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf
 manuscript-pack/build_a16_double_blind.py
 manuscript-pack/compile_manuscript.py
 manuscript-pack/prior_venue_guard.py

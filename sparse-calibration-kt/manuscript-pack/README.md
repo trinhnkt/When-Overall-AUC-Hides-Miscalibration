@@ -1,14 +1,15 @@
 # Manuscript sources
 
-Living manuscript (named and anonymized Word/PDF, 13 pages, 24 September 2026).
-IJIET/OJS does not name the author project folder; this directory is venue-neutral. Upload files keep the paper title. Edit Word in `manuscript/`, then pack `output/OJS_UPLOAD/` for the editorial office.
+Living manuscript (named and anonymized Word/PDF, 13 pages, 28 September 2026).
+IJIET/OJS does not name the author project folder; this directory is venue-neutral. Upload files keep the paper title. Word lives in `manuscript/`. PDFs live in `output/`. `output/OJS_UPLOAD/` holds the cover letter and the reviewer zip, not a second copy of the paper.
 
 Extra tables are **Appendix A1–A6** in the main file. Do not upload `supplementary.pdf`.
 
 | Path | Role |
 |------|------|
-| `manuscript/` | Named and anonymized Word |
-| `output/OJS_UPLOAD/` | Files for the journal OJS upload |
+| `manuscript/` | Named and anonymized Word (the only copy) |
+| `output/` | Named and anonymized PDF (the only copy) |
+| `output/OJS_UPLOAD/` | Cover letter and reviewer zip |
 | `analysis/` | Locked numeric artifacts |
 | `audit/SCIENTIFIC_LOCKS.md` | Frozen ECE/FAR/XES cells |
 | `docs/how_to_reproduce.md` | LEVEL A vs Track A |
@@ -20,5 +21,5 @@ Extra tables are **Appendix A1–A6** in the main file. Do not upload `supplemen
 
 Target: named and anonymized files use the paper title (`manuscript_paths.py`).
 
-Office files: `output/OJS_UPLOAD/` (see `README_SUBMIT.md` there).
+Office notes: `output/OJS_UPLOAD/README_SUBMIT.md`.
 The named file and cover letter are for the editorial office only. Reviewers receive the anonymized PDF and the review zip.

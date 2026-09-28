@@ -2,7 +2,7 @@ Cover letter — International Journal of Information and Education Technology
 
 Manuscript: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 Corresponding author: Van-Hau Nguyen (haunv@utehy.edu.vn)
-Date: 24 September 2026
+Date: 28 September 2026
 
 Dear Editor,
 
@@ -38,6 +38,14 @@ office requires it.
 Funding. This work received no specific funding. It is not part of any
 research grant or funded project.
 
+Ethics. The study is a secondary analysis of publicly released,
+de-identified educational logs. It recruits no participants and applies
+no classroom intervention. The manuscript states that the analysis
+processes no personally identifiable information and raises no
+obligations under GDPR, FERPA, or the applicable regional data
+protection law. No prospective human-subjects protocol number was sought
+for that reason.
+
 Data. The GitHub repository is private during review
 (https://github.com/trinhnkt/Sparse-Concept-and-Calibration). Reviewers
 receive only the anonymized zip. Datasets are those released by the
@@ -47,8 +55,7 @@ acceptance, the repository will be made public and those accompanying-
 artifact contents will be included there.
 
 Generative AI. During manuscript preparation the authors used
-AI-assisted writing tools, including ChatGPT, Claude, Google
-Antigravity, Cursor, and Grok, for language polishing, formatting,
+Cursor 3.18.9 (Grok 4.7) for language polishing, formatting,
 consistency checking, and reproducibility-prompt preparation. AI was not
 used to fabricate or alter experimental results. After using these
 tools, the authors reviewed and edited the content. The authors remain

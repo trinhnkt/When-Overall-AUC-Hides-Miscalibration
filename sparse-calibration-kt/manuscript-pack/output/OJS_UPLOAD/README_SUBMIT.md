@@ -2,28 +2,32 @@
 
 **Journal:** International Journal of Information and Education Technology (www.ijiet.org)  
 **Title:** Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing  
-**Date packed:** 24 September 2026  
+**Date packed:** 28 September 2026  
 **Length:** named **13 pages**, blind **13 pages**. IJIET: no word limit; every table stays in the single Word file (main Tables 1–8 + Appendix A1–A6). Title 20 pt.
 
 This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.  
 **T-KT** is a local Transformer reference, not published SimpleKT.
 
 Submission rules (www.ijiet.org): one editable `.doc`/`.pdf` with every figure and
-table embedded; abstract 150–250 words (currently 231); at most 7 keywords (currently 6);
-double-blind review; AI use disclosed (ChatGPT, Claude, Google Antigravity, Cursor, Grok).
+table embedded; abstract 150–250 words (currently 207); at most 7 keywords (currently 6);
+double-blind review; AI use disclosed (Cursor 3.18.9 with Grok 4.7).
 APC is **800 USD after** acceptance. Authors keep copyright (CC BY 4.0).
 Do not submit through `ijiet.com` — that is a different journal.
+
+The paper is stored once. Word is in `manuscript-pack/manuscript/`.
+PDFs are in `manuscript-pack/output/`. This folder keeps the cover letter,
+the reviewer zip, and these notes. It does not keep a second copy of the paper.
 
 ## Upload these files
 
 | OJS slot | File | Who sees it |
 |----------|------|-------------|
-| Manuscript (editor) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc` (or `.docx`) | Editorial office |
-| Manuscript PDF (editor) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | Editorial office |
-| Review file (double-blind) | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | Reviewers |
-| Optional Word for review | `Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.doc` | Reviewers if OJS asks for Word |
-| Code for review | `code_for_review_anonymous.zip` | Reviewers |
-| Cover letter | `cover_letter_ijiet.txt` | Editor only |
+| Manuscript (editor) | `manuscript-pack/manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.doc` (or `.docx`) | Editorial office |
+| Manuscript PDF (editor) | `manuscript-pack/output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing.pdf` | Editorial office |
+| Review file (double-blind) | `manuscript-pack/output/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.pdf` | Reviewers |
+| Optional Word for review | `manuscript-pack/manuscript/Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing_blind.doc` | Reviewers if OJS asks for Word |
+| Code for review | `code_for_review_anonymous.zip` (this folder) | Reviewers |
+| Cover letter | `cover_letter_ijiet.txt` (this folder) | Editor only |
 
 Do **not** send reviewers the named PDF/Word.  
 Do **not** upload `supplementary.pdf` — every table remains in the single Word manuscript; IJIET has no word limit.
