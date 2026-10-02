@@ -1,21 +1,21 @@
 dataset,fold,channel,decision,fit_scope,verdict,note
 assist2012,learner_fold0,L1_split,learner-based user partition,train_users_only,PASS,Test learners disjoint from train; temporal split complementary
 assist2012,learner_fold0,L2_preprocess,schema normalize and sequence filter,train_only,PASS,Frequency filters and z-scores not fit on full log
-assist2012,learner_fold0,L3_qmatrix,skill_id expert/platform tag,static_tag,PASS,No test-response Q-matrix expansion
+assist2012,learner_fold0,L3_qmatrix,Static platform-provided mapping,static_tag,PASS,Released skill_id. L3 — KC map / Q-matrix. No test-response expansion.
 assist2012,learner_fold0,L4_sparse_bucket,f_train cuts 20/100/500,train_fold_only,PASS,Bucket assignment uses training-fold counts only
 assist2012,learner_fold0,L5_calibration,ECE 15-bin and Brier,evaluate_only,PASS,No temperature/Platt; bins not tuned on test labels
 assist2012,learner_fold0,L6_hyperparameter,recovered defaults; final checkpoint,fixed_schedule,PASS,Table 2 Selection metric is final checkpoint; no test-based tuning
 assist2012,learner_fold0,L7_cold_start,strict f_train=0 vs limited 0<f<20,train_fold_only,PASS,Strict bin has too few test events (Insufficient); reported as feasibility
 junyi,learner_fold0,L1_split,learner-based user partition,train_users_only,PASS,Test learners disjoint
 junyi,learner_fold0,L2_preprocess,schema normalize,train_only,PASS,ucid is the operational KC
-junyi,learner_fold0,L3_qmatrix,exercise-level ucid,static_tag,PASS,Not a skill Q-matrix; tagging is finer than a skill
+junyi,learner_fold0,L3_qmatrix,Static platform-provided mapping,static_tag,PASS,"ucid is an operational content/exercise identifier, not a manually curated skill tag."
 junyi,learner_fold0,L4_sparse_bucket,f_train cuts 20/100/500,train_fold_only,PASS,Learner-based sparse bucket empty (estimability)
 junyi,learner_fold0,L5_calibration,ECE 15-bin and Brier,evaluate_only,PASS,No temperature scaling
 junyi,learner_fold0,L6_hyperparameter,recovered defaults; final checkpoint,fixed_schedule,PASS,Table 2 Selection metric is final checkpoint; no test-based tuning
 junyi,learner_fold0,L7_cold_start,strict f_train=0,train_fold_only,PASS,No estimable strict cold-start slice under learner-based ucid
 xes3g5m,learner_fold0,L1_split,learner-based user partition,train_users_only,PASS,Padding token skill_id=-1 excluded from scored rows
 xes3g5m,learner_fold0,L2_preprocess,mask invalid/pad positions,train_only,PASS,A2B masked ECE cells used in the main text
-xes3g5m,learner_fold0,L3_qmatrix,skill_id,static_tag,PASS,No test-fold remapping
+xes3g5m,learner_fold0,L3_qmatrix,Static platform-provided mapping,static_tag,PASS,Released KC mapping. L3 — KC map / Q-matrix. No test-fold remapping.
 xes3g5m,learner_fold0,L4_sparse_bucket,f_train cuts 20/100/500,train_fold_only,PASS,Sparse mass 22.5 percent of KCs
 xes3g5m,learner_fold0,L5_calibration,ECE 15-bin and Brier,evaluate_only,PASS,No temperature scaling
 xes3g5m,learner_fold0,L6_hyperparameter,recovered defaults; final checkpoint,fixed_schedule,PASS,Table 2 Selection metric is final checkpoint; no test-based tuning

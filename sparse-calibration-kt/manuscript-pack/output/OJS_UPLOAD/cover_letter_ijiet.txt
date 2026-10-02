@@ -2,7 +2,7 @@ Cover letter — International Journal of Information and Education Technology
 
 Manuscript: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 Corresponding author: Van-Hau Nguyen (haunv@utehy.edu.vn)
-Date: 28 September 2026
+Date: 29 September 2026
 
 Dear Editor,
 
@@ -38,30 +38,39 @@ office requires it.
 Funding. This work received no specific funding. It is not part of any
 research grant or funded project.
 
-Ethics. The study is a secondary analysis of publicly released,
-de-identified educational logs. It recruits no participants and applies
-no classroom intervention. The manuscript states that the analysis
-processes no personally identifiable information and raises no
-obligations under GDPR, FERPA, or the applicable regional data
-protection law. No prospective human-subjects protocol number was sought
-for that reason.
+Ethics. This study is a secondary analysis of publicly released,
+de-identified benchmark educational datasets (ASSISTments 2012, Junyi
+Academy, and XES3G5M). No new human participants were recruited and no
+classroom intervention was conducted. The Junyi Academy dump is used
+under the provider's CC BY-NC-SA 4.0 terms. The authors processed only
+the de-identified records released by the original dataset providers; no
+direct identifiers were available to the authors, no re-identification
+was attempted, and no new personal data were collected. Data handling
+was conducted in accordance with applicable institutional and regional
+data-protection requirements, including GDPR or FERPA where applicable
+to the source data and jurisdiction.
 
-Data. The GitHub repository is private during review
-(https://github.com/trinhnkt/Sparse-Concept-and-Calibration). Reviewers
-receive only the anonymized zip. Datasets are those released by the
-original providers. The review zip rebuilds the reported tables from
-frozen summaries; it does not retrain models or include raw dumps. Upon
-acceptance, the repository will be made public and those accompanying-
-artifact contents will be included there.
+Data. The artifact accompanying this submission contains configuration
+files, preprocessing and audit scripts, frozen diagnostic summaries,
+audit records, and a command that rebuilds the reported diagnostic
+tables from those summaries. It does not include the raw public
+datasets, historical training containers, or a guaranteed full retrain.
+The artifact supports re-derivation of the reported tables, not
+recreation of historical training-container commits. Source benchmark
+datasets are publicly released by their original providers. During
+review, reviewers receive only the anonymized accompanying artifact.
+The public repository URL will be released upon acceptance. For the
+editorial office only, and not for reviewers:
+https://github.com/trinhnkt/Sparse-Concept-and-Calibration.
 
 Generative AI. During manuscript preparation the authors used
-Cursor 3.18.9 (Grok 4.7) for language polishing, formatting,
+Cursor 3.18.9 (Grok 4.6 and Grok 4.7) for language polishing, formatting,
 consistency checking, and reproducibility-prompt preparation. AI was not
-used to fabricate or alter experimental results. After using these
-tools, the authors reviewed and edited the content. The authors remain
+used to fabricate or alter experimental results. After using this
+tool, the authors reviewed and edited the content. The authors remain
 responsible for all content. Generative AI is not a co-author.
 
 Sincerely,
 Van-Hau Nguyen
-Hung Yen University of Technology and Education
+Hung Yen University of Technology and Engineering
 haunv@utehy.edu.vn

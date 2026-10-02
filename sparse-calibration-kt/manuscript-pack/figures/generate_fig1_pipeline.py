@@ -21,7 +21,7 @@ ROW1 = [
     ("Raw logs", None),
     ("Preprocess", "L2"),
     ("Split", "L1"),
-    ("KC map", "L3"),
+    ("KC map", "L3"),  # short box label; caption and Table 3 use the full L3 name
     ("Train-only\nfrequency", None),
 ]
 ROW2 = [

@@ -10,7 +10,7 @@ This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not
 
 Submission rules (www.ijiet.org): one editable `.doc`/`.pdf` with every figure and
 table embedded; abstract 150–250 words (currently 207); at most 7 keywords (currently 6);
-double-blind review; AI use disclosed (Cursor 3.18.9 with Grok 4.7).
+double-blind review; AI use disclosed (Cursor 3.18.9 with Grok 4.6 and Grok 4.7).
 APC is **800 USD after** acceptance. Authors keep copyright (CC BY 4.0).
 Do not submit through `ijiet.com` — that is a different journal.
 

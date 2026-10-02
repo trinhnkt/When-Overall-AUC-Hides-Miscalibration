@@ -72,7 +72,7 @@ strata_temporal_f0_kc-1,train=1540356;valid=0;test=0;bucket=dense,kc_strata.csv
 a9_elig_-1_rows,1,analysis/a9/kc_eligibility.csv
 a9_elig_-1_eligible_flag,False,"{'kc_id': '-1', 'train_freq': 1078981, 'train_correct_rate': 0.0, 'test_n': 306723, 'test_pos': 0, 'test_neg': 306723, 'difficulty_proxy': 1.0, 'in_official_preds': True, 'eligible': False, 'dataset': 'xes3g5m', 'kc': '-1'}"
 a9_selected_contains_-1,False,selected_kcs.csv
-a9_t500_train_rows,5240403,C:\TRINH\Sparse-Concept and Calibration\sparse-calibration-kt\data\processed\a9\xes3g5m\t500\learner_based\fold_0\train.csv
+a9_t500_train_rows,5240403,data/processed/a9/xes3g5m/t500/learner_based/fold_0/train.csv
 a9_t500_train_pad,1078981,others kept in downsample
 tv_sequences,33397,kc_level sequences
 te_sequences,3613,kc_level sequences
