@@ -1,6 +1,6 @@
 # Manuscript sources
 
-Living manuscript (named and anonymized Word/PDF, 13 pages, 28 September 2026).
+Living manuscript (named and anonymized Word/PDF, 13 pages, 3 October 2026).
 IJIET/OJS does not name the author project folder; this directory is venue-neutral. Upload files keep the paper title. Word lives in `manuscript/`. PDFs live in `output/`. `output/OJS_UPLOAD/` holds the cover letter and the reviewer zip, not a second copy of the paper.
 
 Extra tables are **Appendix A1–A6** in the main file. Do not upload `supplementary.pdf`.
