@@ -2,7 +2,7 @@ Cover letter — International Journal of Information and Education Technology
 
 Manuscript: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
 Corresponding author: Van-Hau Nguyen (haunv@utehy.edu.vn)
-Date: 29 September 2026
+Date: 3 October 2026
 
 Dear Editor,
 
@@ -38,17 +38,25 @@ office requires it.
 Funding. This work received no specific funding. It is not part of any
 research grant or funded project.
 
-Ethics. This study is a secondary analysis of publicly released,
-de-identified benchmark educational datasets (ASSISTments 2012, Junyi
-Academy, and XES3G5M). No new human participants were recruited and no
-classroom intervention was conducted. The Junyi Academy dump is used
-under the provider's CC BY-NC-SA 4.0 terms. The authors processed only
-the de-identified records released by the original dataset providers; no
-direct identifiers were available to the authors, no re-identification
-was attempted, and no new personal data were collected. Data handling
-was conducted in accordance with applicable institutional and regional
-data-protection requirements, including GDPR or FERPA where applicable
-to the source data and jurisdiction.
+Ethics. This study is a secondary analysis of three publicly released,
+de-identified educational benchmark datasets: ASSISTments 2012, Junyi
+Academy, and XES3G5M. The records were de-identified by the original
+dataset providers before release. The research team did not recruit new
+participants, including students, teachers, or minors, did not contact
+learners or their parents or guardians, and did not conduct a classroom
+intervention. The team did not collect new written consent, new log
+files, or video recordings. The research team did not collect new
+personal data, access direct personal identifiers, or attempt to
+re-identify any learner. The Junyi Academy dump is used under the
+provider's CC BY-NC-SA 4.0 terms. The study is not an industry-partnered
+data collection, and no EdTech company commissioned the analysis. Under
+the institutional policy of Hung Yen University of Technology and
+Engineering, this secondary analysis does not require prospective
+human-subjects ethics review, and no institutional ethics protocol
+number applies. Data handling was limited to those publicly released,
+provider-de-identified records. Where the GDPR, FERPA, or another
+regional data-protection law applies to the source data and its
+jurisdiction, this handling is the stated basis of compliance.
 
 Data. The artifact accompanying this submission contains configuration
 files, preprocessing and audit scripts, frozen diagnostic summaries,
