@@ -1,0 +1,4 @@
+claim_id,sentence,location,estimand,prediction_file,script,value,interval,status
+C198,"Item support median 44.5 (dense 198 vs sparse 1)","Table 8 ASSISTments","median distinct train items per KC, fold 0, SimpleKT-scored KCs; dense f_train>=500; sparse or very-sparse","data/processed/assist2012/splits/learner_based/fold_0/train.csv","recomputed in the 21/10 check; not a new model run","44.5; dense 198; sparse 1","",SUPPORTED
+C-DKT-OLD,"DKT ECE 0.0602 dense versus 0.2333 sparse","Abstract; IV.B; Table 5; Table 6; Table A1; Table A4a","old protocol final checkpoint x full test history","results/predictions legacy CSVs","not recomputed; checkpoints NOT RECOVERED","0.0602; 0.2333","",CONDITIONAL
+C-PRIMARY,"DKT sparse-versus-dense ECE under best_valid x chunk","not in the manuscript until R1-R4 apply","primary estimand of analysis_plan_P0_v2","","src/protocol_v2.py; src/ece_uncertainty.py","","",UNSUPPORTED

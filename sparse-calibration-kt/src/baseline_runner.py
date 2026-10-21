@@ -1,3 +1,4 @@
+import copy
 import pandas as pd
 import numpy as np
 import torch
@@ -17,7 +18,7 @@ class DKT(nn.Module):
     def __init__(self, n_kcs, embed_dim=64, hidden_dim=128):
         super(DKT, self).__init__()
         self.n_kcs = n_kcs
-        self.embed = nn.Embedding(n_kcs * 2 + 1, embed_dim)
+        self.embed = nn.Embedding(n_kcs * 2 + 1, embed_dim, padding_idx=n_kcs * 2)
         self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True)
         self.fc = nn.Linear(hidden_dim, n_kcs)
         self.sigmoid = nn.Sigmoid()
@@ -33,8 +34,8 @@ class SimpleKT(nn.Module):
     def __init__(self, n_kcs, embed_dim=64, n_heads=4):
         super(SimpleKT, self).__init__()
         self.n_kcs = n_kcs
-        self.embed = nn.Embedding(n_kcs * 2 + 1, embed_dim)
-        # Use a simple Transformer encoder layer as "simpleKT"
+        self.embed = nn.Embedding(n_kcs * 2 + 1, embed_dim, padding_idx=n_kcs * 2)
+        # Local T-KT reference. Causal and padding masks live on TKTc in protocol_v2.
         encoder_layer = nn.TransformerEncoderLayer(d_model=embed_dim, nhead=n_heads, batch_first=True)
         self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=2)
         self.fc = nn.Linear(embed_dim, n_kcs)
@@ -97,15 +98,41 @@ def collate_fn(batch):
 
 # --- Training Loop ---
 
-def train_torch_model(model, train_loader, valid_loader, device, n_epochs=50, lr=1e-3):
+def train_torch_model(
+    model,
+    train_loader,
+    valid_loader,
+    device,
+    n_epochs=50,
+    lr=1e-3,
+    select="final",
+    patience=8,
+    log_path=None,
+):
+    """select='final' keeps bản I behavior (weights after the last epoch).
+
+    select='best_valid' stores a deepcopy of the best validation-AUC epoch
+    and stops after `patience` epochs without an improvement. The old
+    assignment best_state = model.state_dict() kept a live reference, so
+    load_state_dict restored the final epoch even when a better epoch existed.
+    """
+    if select not in ("final", "best_valid"):
+        raise ValueError(f"unknown select={select}")
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
     criterion = nn.BCELoss(reduction='none')
-    
-    best_valid_auc = 0
+
+    best_valid_auc = -1.0
     best_state = None
-    
+    best_epoch = None
+    since_improve = 0
+    epoch_logs = []
+    last_epoch = 0
+
     for epoch in range(n_epochs):
+        last_epoch = epoch
         model.train()
+        loss_sum = 0.0
+        loss_n = 0
         for feats, labels, kcs in train_loader:
             feats, labels, kcs = feats.to(device), labels.to(device), kcs.to(device)
             optimizer.zero_grad()
@@ -125,7 +152,9 @@ def train_torch_model(model, train_loader, valid_loader, device, n_epochs=50, lr
             loss = criterion(target_preds[mask], labels_flat[mask]).mean()
             loss.backward()
             optimizer.step()
-            
+            loss_sum += float(loss.item())
+            loss_n += 1
+
         # Validation
         model.eval()
         all_preds = []
@@ -144,14 +173,36 @@ def train_torch_model(model, train_loader, valid_loader, device, n_epochs=50, lr
                 all_labels.extend(labels_flat[mask].cpu().numpy())
         
         from sklearn.metrics import roc_auc_score
-        if len(all_labels) > 0:
-            valid_auc = roc_auc_score(all_labels, all_preds)
+        valid_auc = float("nan")
+        if len(all_labels) > 0 and len(set(np.asarray(all_labels).tolist())) > 1:
+            valid_auc = float(roc_auc_score(all_labels, all_preds))
             if valid_auc > best_valid_auc:
                 best_valid_auc = valid_auc
-                best_state = model.state_dict()
-    
-    if best_state:
+                best_epoch = epoch
+                since_improve = 0
+                if select == "best_valid":
+                    best_state = copy.deepcopy(model.state_dict())
+            else:
+                since_improve += 1
+        else:
+            since_improve += 1
+        train_loss = loss_sum / loss_n if loss_n else float("nan")
+        epoch_logs.append({
+            "epoch": epoch,
+            "train_loss": train_loss,
+            "valid_auc": valid_auc,
+            "valid_nll": float("nan"),
+            "valid_ece": float("nan"),
+        })
+        if select == "best_valid" and since_improve >= patience:
+            break
+
+    if select == "best_valid" and best_state is not None:
         model.load_state_dict(best_state)
+    model.selected_epoch = best_epoch if select == "best_valid" else last_epoch
+    if log_path:
+        Path(log_path).parent.mkdir(parents=True, exist_ok=True)
+        pd.DataFrame(epoch_logs).to_csv(log_path, index=False)
     return model
 
 def predict_sequential(model, test_df, kc_map, device, batch_size=2048):
