@@ -1,16 +1,38 @@
 # When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components
 
-A protocol for Knowledge Tracing on sparse concepts: train-only KC strata, occupancy-aware reporting, ECE/Brier, reliability diagrams, L1–L7 leakage control, and a frozen one-command table rebuild. It is not a new KT architecture and not a classroom trial.
+A protocol for knowledge tracing on rarely practiced knowledge components: train-only frequency groups, occupancy-aware reporting, expected calibration error and Brier decomposition, reliability diagrams, and eight leakage checks. Check L8 withholds model-based results on XES3G5M. This is not a new KT architecture and not a classroom trial.
 
-**T-KT** is a local Transformer reference, not published SimpleKT.
+**T-KT** is a local Transformer reference, not published simpleKT. simpleKT is scored on ASSISTments 2012 only.
 
 This file is written for double-blind review. It does not name authors, a target journal, or a public code URL. Reviewers receive an anonymized code bundle with the manuscript; do not treat this README as a camera-ready citation.
 
 ## Manuscript
 
-The submission uses a named file for the editorial office and a separate anonymized file for reviewers. Appendix Tables A1–A4 stay in the main Word/PDF. Do not upload a separate `supplementary.pdf`. Validation-AUC checkpoint summaries used in the text are `A4_dkt_2x2.csv`, `A5_*`, `B1_tktc_*`, `B2_junyi_dkt_*`, and `B3_simplekt_*` under `When Overall AUC Hides Miscalibration/results/`. They do not replace the locked Table 5 cells.
+The living manuscript is 12 pages (24 October 2026). Main-text Tables 1–6 and Appendix Tables A1–A4 stay in the single Word file. Do not upload a separate `supplementary.pdf`. The Overleaf zip is not the submission file.
 
-Locked numeric cells are in `When Overall AUC Hides Miscalibration/manuscript-pack/audit/SCIENTIFIC_LOCKS.md`.
+Named and anonymized Word files:
+
+`When Overall AUC Hides Miscalibration/manuscript-pack/manuscript/When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components.docx`
+
+`When Overall AUC Hides Miscalibration/manuscript-pack/manuscript/When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components_blind.docx`
+
+The matching `.doc` and `.pdf` files use the same stem. PDFs are in `manuscript-pack/output/`. The editorial office receives the named file. Reviewers receive the anonymized PDF and `manuscript-pack/output/OJS_UPLOAD/code_for_review_anonymous.zip`.
+
+Table 5 remains the final-checkpoint, full-history result. Locked ASSISTments cells include DKT ECE `0.0602` / `0.2333`, T-KT ECE `0.1136` / `0.2280`, and FAR `0.196` / `0.268`. Validation-AUC checkpoint checks are reported in the text and are not extra tables. Their summaries are:
+
+- `When Overall AUC Hides Miscalibration/results/A4_dkt_2x2.csv`
+- `When Overall AUC Hides Miscalibration/results/A5_uncertainty_dkt_assist.csv`
+- `When Overall AUC Hides Miscalibration/results/A5_secondary_dkt_assist.csv`
+- `When Overall AUC Hides Miscalibration/results/B1_tktc_uncertainty.csv`
+- `When Overall AUC Hides Miscalibration/results/B1_tktc_secondary.csv`
+- `When Overall AUC Hides Miscalibration/results/B2_junyi_dkt_uncertainty.csv`
+- `When Overall AUC Hides Miscalibration/results/B2_junyi_dkt_secondary.csv`
+- `When Overall AUC Hides Miscalibration/results/B3_simplekt_uncertainty.csv`
+- `When Overall AUC Hides Miscalibration/results/B3_simplekt_secondary.csv`
+
+The same nine files are packed for reviewers at `results/validation_checkpoint/` inside the anonymous zip. They do not replace Table 5.
+
+Other locked cells are in `When Overall AUC Hides Miscalibration/manuscript-pack/audit/SCIENTIFIC_LOCKS.md`.
 
 ## Datasets
 
@@ -22,7 +44,7 @@ Raw logs are **not** shipped. Obtain them from the original providers and place 
 
 ## Reproduce
 
-**LEVEL A** (review-facing): rebuild locked tables from frozen CSVs. No retrain. Does not change ASSISTments T-KT ECE `0.1136` / `0.2280` or FAR `0.196` / `0.268`.
+**LEVEL A** (review-facing): rebuild locked tables from frozen CSVs. No retrain. Does not change the Table 5 cells above.
 
 ```bash
 cd "When Overall AUC Hides Miscalibration"
@@ -39,8 +61,8 @@ bash scripts/rebuild_locked_tables.sh      # Windows: scripts/rebuild_locked_tab
 | `When Overall AUC Hides Miscalibration/src/` | Preprocess, models, metrics, leakage audit |
 | `When Overall AUC Hides Miscalibration/scripts/` | LEVEL A rebuild, Track A runners |
 | `When Overall AUC Hides Miscalibration/configs/` | Dataset / model YAML |
-| `When Overall AUC Hides Miscalibration/results/tables/` | Frozen numeric tables |
-| `When Overall AUC Hides Miscalibration/manuscript-pack/` | Living manuscript sources, figures, frozen analysis |
+| `When Overall AUC Hides Miscalibration/results/` | Validation-AUC summaries and frozen tables |
+| `When Overall AUC Hides Miscalibration/manuscript-pack/` | Living manuscript, figures, frozen analysis |
 | `When Overall AUC Hides Miscalibration/tests/` | Unit tests |
 
 ## Citation

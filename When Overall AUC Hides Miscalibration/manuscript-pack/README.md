@@ -7,8 +7,9 @@ Extra tables are **Appendix A1–A4** in the main file. Do not upload `supplemen
 
 | Path | Role |
 |------|------|
-| `manuscript/` | Named and anonymized Word (the only copy) |
-| `output/` | Named and anonymized PDF (the only copy) |
+| `manuscript/` | Named and anonymized Word |
+| `output/` | Named and anonymized PDF |
+| `../P0_IJIET_FINAL_SUBMISSION/` | Submission copies of the same Word and PDF files |
 | `output/OJS_UPLOAD/` | Cover letter and reviewer zip |
 | `analysis/` | Locked numeric artifacts |
 | `audit/SCIENTIFIC_LOCKS.md` | Frozen ECE/FAR/XES cells |
