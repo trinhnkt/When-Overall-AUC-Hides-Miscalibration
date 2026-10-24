@@ -1,0 +1,158 @@
+# Ignore everything under data recursively (files and directories)
+data/**
+
+# Unignore all directories so Git can traverse them to find .gitkeep files
+!data/**/
+
+# Unignore .gitkeep files so they are tracked
+!data/**/.gitkeep
+!data/README.md
+
+# Predictions (large files)
+results/predictions/
+
+# Python environment & cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# System / IDE settings
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Saved weights / Models
+*.pt
+*.pth
+*.pkl
+*.bin
+
+# Log files
+logs/
+*.log
+*.csv.log
+runs/_*.txt
+
+# Word COM backups, lock files, and LaTeX aux
+*.bak*
+*.bak_pre_*
+~$*
+# IJIET a2b rerun dumps (multi-GB; GitHub 100 MB file cap)
+manuscript-pack/a2b/data/
+manuscript-pack/a2b/checkpoints/
+manuscript-pack/a2b/results/predictions/
+manuscript-pack/a2b/logs/
+
+# Local submission pack and supervisor checklist stay on disk.
+P0_IJIET_FINAL_SUBMISSION/
+
+# Public-repo hides (kept on disk; not pushed)
+/analysis/
+manuscript-pack/_c1_*.py
+manuscript-pack/_export_*.py
+manuscript-pack/_vong5_*.py
+manuscript-pack/output/*
+!manuscript-pack/output/OJS_UPLOAD/
+!manuscript-pack/output/OJS_UPLOAD/**
+!manuscript-pack/output/When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components.pdf
+!manuscript-pack/output/When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components_blind.pdf
+manuscript-pack/build_a16_double_blind.py
+manuscript-pack/compile_manuscript.py
+manuscript-pack/prior_venue_guard.py
+manuscript-pack/analysis/*.py
+manuscript-pack/analysis/XES3G5M_RERUN_MANIFEST.md
+manuscript-pack/figures/fig1_kc_and_train_volume.png
+manuscript-pack/figures/generate_fig1_a2b.py
+manuscript-pack/figures/generate_ijiet_fig1.py
+.agents/
+Check list/
+_archive/
+# Withdrawn earlier submission: sources, audits, and work logs. Never push.
+_withdrawn_private/
+_withdrawn_private/**
+IJIET_FINAL_v3/
+IJIET_SUBMISSION/
+_freeze_ijiet_final_v3.py
+manuscript-pack/manuscript/_export_tmp/
+manuscript-pack/anonymous_overlay/
+manuscript-pack/_p0_*.py
+manuscript-pack/_a3*.py
+manuscript-pack/_rename_paper_to_title.py
+manuscript-pack/_export_a31_pdfs.py
+manuscript-pack/apply_*.py
+manuscript-pack/fix_*.py
+manuscript-pack/repair_*.py
+manuscript-pack/balance_layout.py
+manuscript-pack/fill_page_holes.py
+manuscript-pack/polish_layout_com.py
+manuscript-pack/tighten_float_gaps.py
+manuscript-pack/wrap_fig3_onecol.py
+manuscript-pack/export_*.py
+manuscript-pack/audit/_beauty*/
+results/figures/reliability_per_bucket/
+manuscript-pack/**/supplementary.pdf
+manuscript-pack/supplementary/
+src/models/cl4kt.py
+src/models/gkt_graph.py
+manuscript-pack/apply_xes_a2b_manuscript.py
+manuscript-pack/build_a8_sparsification.py
+manuscript-pack/build_a12_s1.py
+manuscript-pack/build_a13_far.py
+manuscript-pack/patch_a16_supplementary.py
+manuscript-pack/setup_copy.py
+manuscript-pack/analyze_irt_fallback.py
+manuscript-pack/a3_regression_unit_audit.py
+manuscript-pack/a4_cluster_regression.py
+results/reports/*
+!results/reports/p0_official_simplekt_assist_ece.json
+!results/reports/p0_si_s10_leakage.json
+!results/reports/p0_si_threecut.json
+scripts/a4_*.py
+scripts/a5_*.py
+scripts/a7_*.py
+scripts/a8_*.py
+scripts/a11_*.py
+scripts/audit_*.py
+scripts/c_threshold_*.py
+scripts/create_new_folds.py
+scripts/make_all_figures.sh
+scripts/make_all_tables.sh
+scripts/make_updated_*.py
+scripts/p0_retrain_bkt_*.py
+scripts/prepare_and_run_reruns.py
+scripts/recalc_temporal_calibration.py
+scripts/run_assist_*.ps1
+scripts/run_assist_*.sh
+scripts/run_junyi_*.ps1
+scripts/run_junyi_*.sh
+scripts/run_xes_*.ps1
+scripts/run_xes_*.sh
+scripts/run_reruns.py
+scripts/run_temporal_junyi_xes.ps1
+scripts/run_delong_tests.py
+scripts/compare_auc_delong_xu.py
+scripts/add_reliability_flag.py
+results/tables/bkt_debug*.csv
+results/tables/bkt_smoothing*.csv
+scripts/a9_*.py
+scripts/a9_watch_then_five.py
+scripts/make_table7_standalone.py
+scripts/check_pdf_text.py
+scripts/debug_temporal_split.py
+scripts/t13_rerun_manager.py
+scripts/p0_retrain_queue.py
+src/generate_pdf_*.py
+manuscript-pack/audit/*
+!manuscript-pack/audit/SCIENTIFIC_LOCKS.md
+*.rar
+*.editor.txt

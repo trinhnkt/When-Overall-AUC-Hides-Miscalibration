@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: If you use this code, please cite this repository.
-title: Reproducible Sparse-Concept and Calibration Diagnostics for Knowledge Tracing
+title: "When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components"
 abstract: A reproducible protocol and calibration diagnostic for sparse knowledge components in Knowledge Tracing, with train-only strata, occupancy-aware reporting, ECE/Brier, reliability diagrams, L1-L7 leakage control, and a frozen table rebuild.
 type: software
 license: MIT
