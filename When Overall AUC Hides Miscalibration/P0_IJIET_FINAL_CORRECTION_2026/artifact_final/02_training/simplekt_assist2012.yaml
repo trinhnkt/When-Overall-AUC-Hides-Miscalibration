@@ -1,0 +1,18 @@
+dataset_name: assist2012
+raw_data_path: data/raw/assistments2012/2012-2013-data-with-predictions-4-final.csv
+processed_data_path: data/processed/assist2012/interactions.csv
+user_col: user_id
+item_col: problem_id
+kc_col: skill_id
+timestamp_col: start_time
+correct_col: correct
+min_sequence_length: 2
+split_ratios:
+  train: 0.7
+  valid: 0.1
+  test: 0.2
+bucket_thresholds: [20, 100, 500]
+cold_start_k_values: [5, 10]
+n_bins_ece: 15
+seeds: [42]
+baselines: [simplekt]

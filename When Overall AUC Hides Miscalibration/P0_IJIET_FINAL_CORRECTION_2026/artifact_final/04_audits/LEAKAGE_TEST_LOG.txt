@@ -1,0 +1,8 @@
+25/10/2026
+py -3 -m pytest -q tests/test_protocol_v2.py tests/test_xes_events.py
+23 passed in 6.56s
+
+test_protocol_v2.py covers T-KT masked causal mask, padding, and prediction-target alignment.
+test_xes_events.py covers multi-KC same-response leakage on synthetic events.
+XES3G5M L8 on the KC-row route remains FAIL. See GATE_B_XES_REPORT.md.
+Model status: T-KT masked is valid for ASSISTments. Unmasked T-KT is excluded. XES is DESCRIPTIVE_AUDIT_ONLY.

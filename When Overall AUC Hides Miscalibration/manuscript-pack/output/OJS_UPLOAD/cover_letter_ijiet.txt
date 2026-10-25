@@ -1,85 +1,40 @@
 Cover letter — International Journal of Information and Education Technology
 
-Manuscript: When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components
-Corresponding author: Van-Hau Nguyen (haunv@utehy.edu.vn)
-Date: 24 October 2026
+Manuscript: When Overall AUC Hides Miscalibration: Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components
+Date: 25 October 2026
 
 Dear Editor,
 
-Please consider the enclosed manuscript for IJIET. It is a protocol and
-calibration diagnostic for knowledge-tracing (KT) probabilities that
-educational platforms use to skip, remediate, or advance practice. The
-evaluation uses train-only knowledge-component frequency strata,
-occupancy-aware reporting, expected calibration error (ECE) and Brier
-decomposition, reliability diagrams, and eight leakage checks (L1–L8).
-Check L8 withheld model-based results on XES3G5M. The study is applied
-to three public logs (ASSISTments 2012, Junyi Academy, and XES3G5M)
-with IRT, DKT, a local Transformer reference (T-KT), and simpleKT on
-ASSISTments 2012. A locked probability threshold is reported only as a
-simulated decision-error probe. The paper does not propose a new KT architecture,
-a new calibrator, or a classroom intervention.
+Please consider the enclosed manuscript. It is an evaluation protocol for
+knowledge-tracing probabilities, not a new tracing model.
 
-The named file is 12 pages in the IJIET template. The double-blind file
-is 12 pages. All tables remain in this single Word manuscript: main-text
-Tables 1–6 and Appendix Tables A1–A4 (Brier decomposition, alternative
-frequency cuts, and the threshold probe). There is no separate
-supplementary table file. Pre-specified validation-AUC checkpoint checks
-are reported in the text and are not additional tables.
-Please send reviewers only the blind PDF (and the blind Word file if
-required) together with code_for_review_anonymous.zip. The named
-Word/PDF are for the editorial office. Please do not send reviewers the
-named files.
+The primary scores use protocol P0-BV200-15EW on ASSISTments 2012:
+a validation-AUC checkpoint, non-overlapping test windows of at most 200,
+15 equal-width bins, and four unique learner partitions. The primary models
+are DKT and a causally masked Transformer. Their sparse ECE is higher than
+their dense ECE. On fold 0 the size-matched gap has a learner-cluster 95%
+interval that excludes 0. The bias reference ΔECE* is reported separately
+and is not a significance test. The fold-0 interval is not a claim about
+all four partitions.
 
-Exclusive submission. This manuscript is not under consideration
-elsewhere. A prior submission of this work received an editorial
-decision not to send the paper for peer review. The IJIET submission is
-the sole active version. We can document that decision privately if the
-office requires it.
+Junyi Academy has no sparse group. Its DKT contrast is post-hoc. XES3G5M
+is a descriptive audit only: leakage check L8 failed, and no corrected
+model was trained. The paper does not claim that the result is replicated
+on three datasets, and it does not use archived final-checkpoint pairs as
+the current result.
 
-Funding. This work received no specific funding. It is not part of any
-research grant or funded project.
+The named file is for the editorial office. Please send reviewers only the
+blind file. There is no separate supplementary PDF. Appendix tables A1, A3,
+and A4 are archived probes and are labeled as such. Table A2 is the DKT
+sensitivity grid.
 
-Ethics. This study is a secondary analysis of three publicly released,
-de-identified educational benchmark datasets: ASSISTments 2012, Junyi
-Academy, and XES3G5M. The records were de-identified by the original
-dataset providers before release. The research team did not recruit new
-participants, including students, teachers, or minors, did not contact
-learners or their parents or guardians, and did not conduct a classroom
-intervention. The team did not collect new written consent, new log
-files, or video recordings. The research team did not collect new
-personal data, access direct personal identifiers, or attempt to
-re-identify any learner. The Junyi Academy dump is used under the
-provider's CC BY-NC-SA 4.0 terms. The study is not an industry-partnered
-data collection, and no EdTech company commissioned the analysis. Under
-the institutional policy of Hung Yen University of Technology and
-Engineering, this secondary analysis does not require prospective
-human-subjects ethics review, and no institutional ethics protocol
-number applies. Data handling was limited to those publicly released,
-provider-de-identified records. Where the GDPR, FERPA, or another
-regional data-protection law applies to the source data and its
-jurisdiction, this handling is the stated basis of compliance.
+Ethics and the generative-AI statement are in the manuscript. They still
+require confirmation by every author before submission. This letter does
+not assert that confirmation.
 
-Data. The artifact accompanying this submission contains configuration
-files, preprocessing and audit scripts, frozen diagnostic summaries,
-audit records, and a command that rebuilds the reported diagnostic
-tables from those summaries. It does not include the raw public
-datasets, historical training containers, or a guaranteed full retrain.
-The artifact supports re-derivation of the reported tables, not
-recreation of historical training-container commits. Source benchmark
-datasets are publicly released by their original providers. During
-review, reviewers receive only the anonymized accompanying artifact.
-The public repository URL will be released upon acceptance. For the
-editorial office only, and not for reviewers:
-https://github.com/trinhnkt/Sparse-Concept-and-Calibration.
-
-Generative AI. During manuscript preparation the authors used
-Cursor 3.18.9 (Grok 4.6 and Grok 4.7) for language polishing, formatting,
-consistency checking, and reproducibility-prompt preparation. AI was not
-used to fabricate or alter experimental results. After using this
-tool, the authors reviewed and edited the content. The authors remain
-responsible for all content. Generative AI is not a co-author.
+For the editorial office only, the repository is
+https://github.com/trinhnkt/When-Overall-AUC-Hides-Miscalibration.
+That address is not in the blind manuscript.
 
 Sincerely,
 Van-Hau Nguyen
-Hung Yen University of Technology and Engineering
-haunv@utehy.edu.vn

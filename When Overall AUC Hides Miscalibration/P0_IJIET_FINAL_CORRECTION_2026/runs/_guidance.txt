@@ -1,0 +1,167 @@
+P000 HƯỚNG DẪN HOÀN THIỆN BÀI BÁO P0–IJIET
+P001 Phản biện có chọn lọc nhận xét mới và kế hoạch thực hiện theo thứ tự ưu tiên A → B → C → D → E
+P002 Đối tượng thực hiện: NCS Trình  |  Tài liệu gốc: “When Overall AUC Hides Miscalibration: Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components” (bản blind mới nhất, 12 trang).
+P003 Mục đích: chuyển bản thảo từ trạng thái “có kết quả bổ sung nhưng chưa thống nhất” sang trạng thái có giao thức hợp lệ, số liệu truy nguyên được, kết luận khớp bảng/hình và hồ sơ blind sạch.
+P005 I. PHẠM VI KIỂM CHỨNG VÀ CÁCH TIẾP THU NHẬN XÉT
+P006 Tôi đã đối chiếu trực tiếp bản DOCX mới nhất với nhận xét được cung cấp, đọc các đoạn III.C, IV.B, IV.D, V.A, V.D, VI, đối chiếu các bảng 2, 5, 6, A1–A4 và kiểm tra cấu trúc chữ màu trong Word. Không có tệp artifact phiên bản mới, tệp dự đoán, mã chạy hoặc cover letter kèm theo yêu cầu này; vì vậy các khẳng định liên quan đến việc “đã chạy lại được” chỉ có thể xác nhận ở mức bản thảo tự báo cáo, CHƯA nghiệm thu độc lập.
+P008 II. SƠ ĐỒ QUYẾT ĐỊNH VÀ CỔNG NGHIỆM THU
+P010 A. KHÓA GIAO THỨC CHÍNH VÀ KIỂM TRA TÍNH HỢP LỆ MÔ HÌNH
+P011 A1. Vấn đề khoa học cần xử lý trước tiên
+P012 Bản hiện tại đồng thời dùng các kết quả “final checkpoint + full test history” trong Table 4/5/A1/A2/Fig. 3 và “validation-AUC checkpoint + cửa sổ 200” trong lời văn IV.B. Đây không chỉ là khác cách trình bày: kết quả chênh lệch ECE thay đổi đáng kể theo cách lựa chọn checkpoint. T-KT ở bảng cũ còn được huấn luyện không có causal mask, do đó không được coi là bằng chứng chính hợp lệ.
+P013 A2. Quyết định trước khi chạy: primary, sensitivity và nguồn kết quả
+P014 Đóng băng dữ liệu, file partition, script, configuration, commit SHA, phiên bản thư viện và checksum của file prediction. Mỗi thí nghiệm có khóa duy nhất (dataset, fold, seed, model, code_sha, ckpt_rule, history_rule, mask_rule).
+P015 Lập “Protocol Decision Log”: ghi giao thức đang được chọn làm primary, vì sao, do ai phê duyệt và thời điểm quyết định. Chọn validation AUC là chính chỉ khi áp dụng nhất quán và mô tả trung thực việc quyết định là trước hay sau khi xem test. Không gọi là pre-specified nếu không có bằng chứng.
+P016 Giao thức đề nghị để hoàn thiện bản chính: tách learner train/valid/test; lựa chọn epoch bằng validation AUC; input causal hợp lệ; test window ≤200; phân nhóm KC chỉ theo train; cùng cách tính metrics. Giữ 15 equal-width bins cho phép so sánh cũ; thêm các sensitivity theo C.
+P017 Các kết quả legacy “final checkpoint/full history” chỉ giữ như kiểm toán quá trình hoặc sensitivity có gắn cờ. T-KT cũ thiếu causal mask tuyệt đối không là bằng chứng xác nhận trong Abstract/Conclusion.
+P018 A3. Khắc phục T-KT và kiểm tra leak
+P019 Định nghĩa sự kiện dự đoán: p(y_t = 1 | lịch sử trước t, item_t, KC_t). Nhãn y_t không được xuất hiện trong token/embedding tại vị trí dự đoán; causal mask không có tác dụng nếu input tại vị trí t đã chứa y_t (kể cả residual connection).
+P020 Shift-right sequence hoặc dùng query item/KC hiện tại với key/value chỉ từ tương tác trước đó; mô tả rõ target alignment.
+P021 Causal attention mask chặn tất cả future keys, padding mask chặn vị trí đệm; thử cả train/eval mode và kiểm tra attention outputs.
+P022 Unit test: đổi y_t, đổi nhãn tương lai, thêm padding, dự đoán tiền tố so với chuỗi đầy đủ có mask (tắt dropout) đều không đổi p_t.
+P023 Huấn luyện lại từ khởi tạo mới trên cùng split; lưu train/validation logs, best checkpoint, final checkpoint, test export và dấu vết truy nguyên.
+P024 Với Junyi, nếu vẫn đưa T-KT vào kết luận, cần có phiên bản masked retrained; nếu chưa, loại mô hình cũ khỏi phần kết quả chính trên Junyi.
+P026 A4. Kiểm tra 2×2 để tránh kết luận nhân quả không được chứng minh
+P027 Làm thí nghiệm DKT ASSISTments trên CÙNG dữ liệu, seed và trọng số từ một run (nếu giữ được cả best-validation và final): 2 checkpoint × 2 chế độ đánh giá. Các ô đã có phải kèm tệp prediction, không tự suy diễn ô còn thiếu. Bảng 2×2 phải báo cáo ít nhất AUC, ECE_dense, ECE_sparse, ΔECE, N_dense, N_sparse cho từng partition; thêm Brier nếu có.
+P029 So sánh A ↔ B chỉ nói về tác động thay đổi test history với cùng trọng số final.
+P030 So sánh B ↔ D chỉ nói về checkpoint selection (giữ cùng cửa sổ test), với điều kiện các checkpoint thuộc cùng run/training setting.
+P031 So sánh A ↔ D có hai thay đổi cùng lúc → không quy nguyên nhân riêng.
+P032 Nếu không có đủ A–D, xóa câu “the large drop came from restoring…” và “scoring the same final-epoch weights…”, thay bằng “ECE differed under the combined changes in checkpoint selection and test context”.
+P034 B. XES3G5M — HUẤN LUYỆN LẠI KHÔNG RÒ RỈ HOẶC GIỚI HẠN PHẠM VI
+P035 B1. Tại sao vẫn là nhiệm vụ trọng yếu?
+P036 Trong bản thảo hiện tại, L8 của XES3G5M = FAIL vì các KC row trong một lần làm bài được xử lý tuần tự và có thể mang nhãn của cùng response vào lịch sử dự đoán. Bản thảo loại toàn bộ kết quả model-based là đúng, nhưng về nghiên cứu sparse KC, hiện chỉ ASSISTments cho đối sánh sparse–dense đã vượt kiểm toán. Vì thế chưa nên mô tả công trình là kiểm chứng mạnh trên ba tập dữ liệu.
+P037 B2. Hướng triển khai khuyến nghị
+P038 Xác định đơn vị lịch sử là lần trả lời câu hỏi q_t, với tập KC C(q_t). Tạo định danh response_id theo nguồn phát hành có thể kiểm chứng; không giả định question_id duy nhất giữa mọi lần làm.
+P039 Tại thời điểm t, tính mọi dự đoán cho KC thuộc C(q_t) từ đúng lịch sử trước câu hỏi t. Không update history sau KC thứ nhất rồi dự đoán KC thứ hai của cùng response.
+P040 Chỉ sau khi hoàn tất tất cả dự đoán của câu hỏi t mới đưa cặp (question, response) vào lịch sử đúng một lần; bảo đảm mục tiêu KT ở cấp KC được mô tả là KC-incidence, không lẫn với số lượng câu hỏi độc lập.
+P041 Tái huấn luyện DKT và T-KT masked từ đầu; SimpleKT chỉ thêm khi có mapping và chế độ scoring tương thích. Chia train/validation/test ở cấp người học, rồi xác định tần suất KC từ train-only.
+P042 Thiết kế loss/weights rõ ràng khi một câu hỏi gắn nhiều KC; ghi kết quả tính theo KC-incidence và nếu cần thêm phân tích theo response_id (tránh ngộ nhận nhiều nhãn độc lập).
+P043 B3. Các kiểm thử bắt buộc trên pipeline
+P044 Kiểm tra response_id/group của các KC row; so sánh tổng số question responses, KC-incidences, hàng lọc/bị loại và repeat flags; giải thích sai khác 863.807 flags so với 6.413.353 − 5.549.635 = 863.718 (không mặc định đây là cùng estimand).
+P045 Kiểm tra p của KC thứ hai không thay đổi nếu sửa outcome trong cùng response ở dữ liệu đầu vào dùng để tính p trước khi feedback; phải PASS với mọi KC của câu hỏi.
+P046 Kiểm tra train/validation/test learner-disjoint, time order, padding/causal, prediction-target alignment; một response không bị chấm lặp do nối các cửa sổ.
+P047 Kiểm tra bằng automated assertions và ít nhất các case tổng hợp có 1 KC, 2 KC, 3 KC, cùng question_id lặp ở các thời điểm khác nhau.
+P049 C. HOÀN THIỆN BẰNG CHỨNG ECE, ĐỘ BẤT ĐỊNH VÀ PHÉP ĐỐI CHỨNG
+P050 C1. Ba đại lượng cần phân biệt
+P052 Cơ sở tham khảo: Roelofs et al., “Mitigating Bias in Calibration Error Estimation,” AISTATS 2022 (PMLR 151:4036–4054). Bài này thảo luận sai lệch ECE theo binning và cỡ mẫu, hỗ trợ yêu cầu phân tích độ nhạy; không phải bằng chứng rằng ECE₀ tự thân là kiểm định.
+P053 C2. Chuẩn hóa tính toán theo bốn phân hoạch
+P054 Với mỗi dataset × model × fold (4 partition DUY NHẤT), xuất N_sparse, N_dense, số KC, số learner, ECE_sparse, ECE_dense, ΔECE, ECE₀ của đúng N trong fold, ΔECE*, size-matched gap, CI95%, AUC/Accuracy/Brier/NLL và FAR nếu dùng.
+P055 Tính mean và SD giữa các partition sau khi gộp hai seed chung fold (không đếm fold 2 và fold 3 là hai mẫu độc lập). Không suy diễn rằng các fold test có thể chồng lấn là bốn mẫu độc lập cho kiểm định quần thể.
+P056 Đối với matched dense: lấy cụm người học ngẫu nhiên, lấy đủ số response rồi rút đúng N_sparse, định nghĩa rõ quy tắc cắt, khả năng lặp, seed; với bootstrap lấy lại learner clusters trong từng nhóm, tái tính toàn bộ ECE và matched sampling trong mỗi replicate. Lưu 2.000 bootstrap replicates và dãy size-match draws, không chỉ lưu CI.
+P057 Nếu mô hình multi-KC trên XES: dùng bootstrap ở response/learner level và ghi rõ weight ở KC-incidence; cỡ mẫu hiệu dụng không mặc nhiên bằng số KC rows.
+P058 Làm sensitivity M ∈ {10,15,20}, equal-width vs equal-mass; tránh chọn phương án đẹp nhất từ test. Báo cáo cả positive/negative/null results.
+P059 C3. Đối soát chính xác số mới đã viết trong bản thảo
+P062 D. VIẾT LẠI KẾT QUẢ VÀ THÔNG ĐIỆP THEO BẰNG CHỨNG MỚI
+P063 D1. Quy tắc thay đổi câu chuyện nghiên cứu
+P064 Luận điểm phù hợp hơn với bằng chứng hiện có: “Báo cáo AUC gộp có thể che giấu sai khác hiệu chuẩn theo tần suất KC; mức chênh lệch phụ thuộc giao thức đánh giá, lựa chọn checkpoint, cỡ mẫu và từng dữ liệu. Một số trường hợp không đủ điều kiện hoặc thất bại kiểm toán nên phải từ chối đưa ra kết luận.”
+P065 Không viết rằng “validation checkpoint chắc chắn xóa hiệu ứng sparse” hay “final checkpoint làm ECE tăng” như kết luận nhân quả khi thiếu 2×2. Không dùng CI fold 0 để tuyên bố toàn bộ bốn phân hoạch đều có ý nghĩa thống kê. Không lấy ECE₀ âm/dương làm kiểm định.
+P066 D2. Thứ tự cập nhật tài liệu (không đảo ngược)
+P067 1. Chốt results.csv với khóa phiên bản và bảng “PRIMARY”; các bảng cũ gắn “LEGACY/SENSITIVITY/INVALID” theo từng dòng.
+P068 2. Thay Table 2 (cấu hình thực sự dùng), Table 4 (AUC/ACC), Table 5 (ECE, ΔECE, ΔECE*, size-matched gap/CI), Table 6C (kết luận theo giao thức chính), Table A1–A4 và Fig. 3 (reliability) bằng số thích hợp. Kết quả chưa có ghi Not evaluated, không điền tự động.
+P069 3. Viết lại IV.B, IV.D, IV.F đúng với các bảng; chuyển phép so sánh 2×2 và final/full vào phần sensitivity nếu muốn giữ.
+P070 4. Viết lại V.A, V.B, V.D: giải thích sự phụ thuộc vào protocol, cỡ mẫu, thiếu sparse Junyi, XES L8, thiếu lặp độc lập; bỏ kết luận mạnh không có bằng chứng.
+P071 5. Viết lại Introduction/RQ/Contributions, sau đó Abstract và Conclusion CUỐI CÙNG; cập nhật cover letter theo đúng phát hiện mới và giới hạn.
+P072 6. Lập claim–evidence map: mỗi câu có số, bảng, fold, checkpoint, window, leakage status, file export chứng minh.
+P073 D3. Mẫu cấu trúc các bảng bắt buộc
+P075 D4. Quy tắc biên tập Abstract và Conclusion
+P076 Độ dài Abstract bản hiện tại là 240 từ; đề nghị rút còn khoảng 180–220 từ để sắc nét hơn, nhưng không viện dẫn đây là trần bắt buộc của IJIET khi chưa xác nhận template. Abstract nên có: (i) 1–2 câu vấn đề; (ii) giao thức và kiểm toán; (iii) kết quả primary có định lượng + CI nếu có; (iv) giới hạn XES/Junyi; (v) thông điệp thận trọng.
+P077 Không đưa các chi tiết fold 1/fold 4 ở Abstract trừ khi đó thực sự là kết quả trọng tâm. Ở Discussion tránh các chuỗi 5–6 dấu chấm phẩy: mỗi đoạn chỉ một kết luận, một con số cốt lõi và một giới hạn.
+P079 E. ARTIFACT, BLIND, THƯ SUBMISSION VÀ CHỐT HỒ SƠ
+P080 E1. Gói bằng chứng thực nghiệm và khả năng tái lập
+P081 Nhận xét cho biết artifact v3 và thư gửi tổng biên tập chưa cập nhật; trong lượt này không có hai tệp đó để xác minh. Vì vậy xếp việc kiểm toán artifact/cover letter vào P0 trước nộp, không kết luận chúng đã thiếu những file cụ thể chỉ dựa trên lời nhận xét.
+P082 NCS phải cung cấp một thư mục phiên bản duy nhất và manifest có checksum; mô tả chính xác những bước có thể tái dựng từ dữ liệu công khai, những bước chỉ tái tạo từ prediction exports, và những bước không thể tái lập nếu thiếu checkpoint/mã cũ.
+P084 E2. Kiểm tra blind và định dạng Word
+P085 Đã xác nhận trực tiếp 134 runs màu FF0000, 851 từ; sau khi duyệt nội dung, đặt chỉ các chữ sửa sang Automatic/đúng màu style. Kiểm tra lần cuối toàn bộ story ranges (body, tables, captions, headers/footers, shape text nếu có), không còn red annotations.
+P086 Tiêu đề hiện dùng dấu “ - ” trong bài và metadata. Đổi thống nhất thành dấu hai chấm “:” trong Word, metadata, OJS, cover letter và supplementary (nếu đây là tên bài cuối).
+P087 Xóa các trường định danh (Author, Last Modified By, custom/core metadata, comments, revision history); với supplementary và repository cũng ẩn danh.
+P088 Dòng CC BY của template không có trong tệp mới. Kiểm tra bản template IJIET hiện hành: chỉ khôi phục nếu mẫu yêu cầu đối với bản nộp; không tự chứng nhận giấy phép copyright trước chấp nhận.
+P089 Kiểm tra hình 3 sau Table 6, page breaks, 12 trang theo LibreOffice vs Word. Ưu tiên bố cục khi mở bằng Word/template chính thức; không cho phép bảng tràn lề hay chú thích tách xa hình.
+P090 Kiểm tra Reference [21] đã có phiên bản hội nghị/trang/DOI cuối hay chưa, tất cả citation ↔ bibliography; rà AI statement, ethical statement và chỉ khai báo thông tin được nhóm tác giả xác nhận.
+P091 Đồng bộ cover letter: đóng góp protocol + controlled results primary, giới hạn XES, không trích số final/full để làm “headline”; nêu dữ liệu/ mã cho reviewer nếu phù hợp với double-blind.
+P092 E3. 10 tiêu chí ký nghiệm thu
+P093 ☐ A1. Đã chốt protocol ID và giải thích trạng thái pre-specified/post-hoc có bằng chứng.
+P094 ☐ A2. T-KT mới PASS test causal/padding/label alignment; bảng chính không dùng bản lỗi.
+P095 ☐ A3. Có bảng 2×2 DKT (nếu còn nói về nguyên nhân checkpoint), hoặc đã bỏ claim nhân quả.
+P096 ☐ B1. XES3G5M có L8 PASS và chạy lại, HOẶC đã hạ phạm vi claim và phân loại là audit-only.
+P097 ☐ C1. Có summary theo bốn partition unique và CI phản ánh đúng đơn vị phụ thuộc.
+P098 ☐ C2. Đã giải thích chênh lệch ΔECE* Junyi và mọi khác biệt do làm tròn/denominator.
+P099 ☐ D1. Abstract, Table 5, Fig. 3, Results, Discussion, Conclusion dùng cùng primary protocol.
+P100 ☐ E1. Artifact/manifest chạy lại được những kết quả được tuyên bố; chỉ rõ ngoại lệ.
+P101 ☐ E2. Bản blind + supplementary + cover letter sạch, thống nhất, không có 851 từ màu đỏ.
+P102 ☐ E3. Tất cả tác giả xác nhận contributions, ethics, AI disclosure và chính sách IJIET.
+P104 III. CÂU HỎI NGƯỜI HƯỚNG DẪN CẦN YÊU CẦU NCS TRẢ LỜI
+P105 1) Có file kế hoạch phân tích được ghi trước khi xem test để sử dụng “pre-specified” hay không? Nếu không, NCS xác nhận đổi thuật ngữ?
+P106 2) Có cả final và best-validation checkpoints trong cùng run để điền đủ ma trận 2×2 hay không? Nếu không, những câu mô tả cơ chế nào cần xóa?
+P107 3) N chính xác trên mỗi fold của thí nghiệm Junyi validation/200 là bao nhiêu, và −0,0032 được tính bằng trung bình nào?
+P108 4) Kết quả T-KT masked đã có cho bao nhiêu dataset × fold, có unit test leak/padding và prediction exports không?
+P109 5) Bản XES3G5M không rò rỉ đã được triển khai đến đâu? Có bằng chứng response-level grouping và L8 PASS không?
+P110 6) Artifact và cover letter thực tế ở phiên bản nào, có file checksum và một lệnh rebuild tập kết quả chính không?
+P111 IV. TÀI LIỆU/NGUỒN ĐỐI CHIẾU
+P112 1. Bản thảo nội bộ: “When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components_blind.docx”, 12 trang (được cung cấp trong cuộc trao đổi).
+P113 2. Nhận xét bổ sung do người hướng dẫn cung cấp, bắt đầu từ “Chưa nên nộp bản này…”; các nhận xét được đánh giá có chọn lọc tại Mục I.
+P114 3. Roelofs, R. et al., “Mitigating Bias in Calibration Error Estimation,” Proceedings of AISTATS, PMLR 151:4036–4054, 2022. https://proceedings.mlr.press/v151/roelofs22a.html
+P115 4. International Journal of Information and Education Technology, Submission Guidelines: https://www.ijiet.org/list-14-1.html
+P116 5. IJIET Editorial Process (double-blind): https://www.ijiet.org/2025/list-141-1.html
+P117 6. Nguồn chính thức XES3G5M: https://github.com/ai4ed/XES3G5M ; tham chiếu về rò rỉ label: pyKT và Badran & Preisach [theo References 5, 6 của bản thảo].
+--- TABLE 0 ---
+R0 | QUYẾT ĐỊNH:  CHƯA SUBMIT bản hiện tại. Không phát hành bản mới chỉ bằng cách xóa chữ đỏ: phải chốt lại kết quả chính, bảo đảm tính hợp lệ của mô hình và hoàn thiện artifact/cover letter.
+--- TABLE 1 ---
+R0 | Nhận xét được cung cấp | Kết luận rà soát | Cách tiếp thu
+R1 | 134 đoạn / 851 từ màu FF0000 | XÁC NHẬN trực tiếp trong DOCX; không có tracked changes. | P0 trình bày: xóa định dạng đỏ sau khi khóa nội dung, không xóa nghĩa/cắt câu tùy tiện.
+R2 | Abstract 240 từ; dài hơn bản I | XÁC NHẬN 240 từ theo cách đếm tách khoảng trắng. Chưa xác minh được trần từ chính thức. | Rút còn khoảng 180–220 từ theo ưu tiên biên tập, không coi 200 là quy định tạp chí.
+R3 | Kết quả final epoch đang lấn át kết quả validation checkpoint | ĐÚNG: số cũ ở bảng 5/Abstract, số mới rải trong IV.B. | Chọn giao thức chính minh bạch; làm lại toàn bộ bảng/hình và lời văn theo cùng giao thức.
+R4 | Cần bảng DKT 2×2 | ĐÚNG nếu muốn quy tác động cho checkpoint hay lịch sử. | Chạy/tổng hợp thiết kế 2×2 cùng partition; nếu thiếu không nêu nguyên nhân riêng.
+R5 | “Pre-specified” phải có bằng chứng có trước kết quả | ĐÚNG. Chưa có file kế hoạch có dấu thời gian để kiểm chứng. | Đổi thành additional/post-hoc robustness analysis nếu không chứng minh được định trước.
+R6 | Junyi ΔECE* −0.0032 không khớp phép tính từ số trung bình | CẦN ĐỐI SOÁT: 0.0302 − 0.5√(15/3706) ≈ −0.0016; trung bình theo từng fold có thể khác. | Xuất N và ECE0 của từng fold, công thức/rounding và giá trị trung bình, không “sửa” −0.0032 bằng suy đoán.
+R7 | Cuối bài thiếu CC BY của mẫu | XÁC NHẬN dòng copyright không có trong phần hiển thị/tài liệu. | ĐỐI CHIẾU mẫu chính thức; không tự thêm bản quyền nhà xuất bản trước khi tạp chí yêu cầu.
+R8 | “Chủ yếu chỉ cần viết, không cần chạy thêm” | KHÔNG CHẤP NHẬN như một kết luận chung: chưa có XES3G5M hợp lệ; thiếu một số ô 2×2 và artifact mới. | Giữ lựa chọn thu hẹp phạm vi nếu thực nghiệm bổ sung không khả thi, nhưng phải công khai giới hạn và sửa claim.
+--- TABLE 2 ---
+R0 | Gói việc | Mức ưu tiên | Phải xong trước | Điều kiện qua cổng (GATE)
+R1 | A. Chốt giao thức và hợp lệ mô hình | P0 – chặn submit | B, C, D | Bằng chứng mask/split; ma trận 2×2 hoặc loại claim nhân quả; chốt primary vs sensitivity.
+R2 | B. Sửa XES3G5M hoặc thu hẹp phạm vi | P0 nếu còn định vị đa tập dữ liệu sparse | C, D | L8 PASS và mô hình retrain; hoặc ghi rõ chỉ là dataset audit/estimability.
+R3 | C. Độ bất định, đối chứng thống kê | P0/P1 – bảo vệ kết luận | D | Bảng theo 4 partition, CI phù hợp; kiểm chứng số Junyi và mẫu.
+R4 | D. Viết lại bài + bảng/hình + thư | P0 – đồng bộ bằng chứng | E | Claim–evidence không mâu thuẫn; văn bản chính dựa trên primary results.
+R5 | E. Artifact, blind và kiểm tra nộp | P0 – phát hành | Submit | Artifact chạy lại trong phạm vi công bố; hồ sơ sạch và tương thích IJIET.
+--- TABLE 3 ---
+R0 | GATE A-1:  Unit tests chống nhìn trước đều PASS; không còn bảng hoặc kết luận chính lấy từ T-KT chưa sửa. Có nhật ký huấn luyện và checkpoint theo từng partition.
+--- TABLE 4 ---
+R0 | Checkpoint | Full history (legacy) | Window ≤200 (chuẩn hóa)
+R1 | Final epoch | Ô A: đánh giá cùng trọng số final | Ô B: đánh giá cùng trọng số final, thay duy nhất test history
+R2 | Best validation AUC | Ô C: đánh giá cùng trọng số best-val | Ô D: giao thức chính; so với B để xét checkpoint
+--- TABLE 5 ---
+R0 | GATE A-2:  Hoặc có bảng 2×2 được truy nguyên từ predictions, hoặc toàn bộ tuyên bố gán nguyên nhân cho từng thành tố đã được bỏ. Không sử dụng dữ liệu kiểm tra để chọn cấu hình thắng.
+--- TABLE 6 ---
+R0 | GATE B:  Nếu L8 = PASS qua unit tests và audit trên toàn bộ split, báo cáo lại XES3G5M với kết quả hợp lệ; nếu không, chỉ giữ phần phân bố/estimability và tuyên bố rõ giới hạn “descriptive audit only”. Không sử dụng chỉ số XES legacy.
+--- TABLE 7 ---
+R0 | Đại lượng | Định nghĩa / diễn giải hợp lệ | Không được suy diễn
+R1 | ΔECE thô | ECE_sparse − ECE_dense tính trên cùng split và version prediction. | Không tự kết luận ý nghĩa thống kê.
+R2 | ΔECE* lý thuyết | ΔECE − 0,5√(M/N_sparse) theo giả định Bernoulli độc lập và cách bin đã nêu. | Không gọi là confidence interval hoặc kiểm định; bound trên bias kỳ vọng, không khống chế sai số mẫu cụ thể.
+R3 | Size-matched gap + CI | ECE_sparse − ECE_dense_subsample; lấy mẫu dense đồng cỡ, bootstrap theo learner để mô tả độ bất định. | Không so sánh trực tiếp với ΔECE* như hai CI; không coi các bản vẽ lặp là nhiều mẫu độc lập.
+--- TABLE 8 ---
+R0 | Trường hợp | Hiện bản thảo ghi | Việc NCS phải xác minh
+R1 | ASSISTments DKT best-val, fold 0 | ECE: 0,0916 – 0,0070 = 0,0846; ΔECE* = −0,0088; matched gap 0,0351, CI [0,0170;0,0821]. | Khớp với export fold 0, cùng 430 sparse events, thuật toán 2.000×200 có được lưu không?
+R2 | ASSISTments T-KT masked | Matched gap fold 0 = 0,0365, CI [0,0233;0,0878]; ΔECE* fold 0 = −0,0102; trung bình 4 fold = +0,0068. | Không viết “ΔECE* did not” cho cả bốn fold; chỉ diễn giải fold 0 âm, mean dương nhỏ.
+R3 | Junyi DKT best-val | Mean ECE_medium 0,0345; dense 0,0043; ΔECE 0,0302; ΔECE* ghi −0,0032. | Tính trực tiếp với N=3706 → khoảng −0,0016; tìm N thực cho evaluation/mean ECE₀ per-fold; nếu không khớp, sửa số + văn bản.
+R4 | simpleKT validation rerun | All rows mean ECE dense/sparse: 0,0251 / 0,0894; ΔECE* âm mỗi fold; CI fold 0 chứa 0. | Có đủ log và checkpoint không? Xác nhận câu “chênh không quá 0,005” đúng với cách gộp bốn phân hoạch.
+--- TABLE 9 ---
+R0 | GATE C:  Có bảng chuẩn hóa đầy đủ ít nhất cho ASSISTments ở giao thức chính trên bốn phân hoạch và bảng phân biệt đúng ΔECE/ΔECE*/matched gap. Bất kỳ discrepancy Junyi nào phải được giải thích bằng tệp phân hoạch và công thức, không chỉnh số theo cảm tính.
+--- TABLE 10 ---
+R0 | Bảng chính mới | Cột cần có (theo dataset × model × fold; thêm hàng aggregate có chú thích) | Vị trí
+R1 | Table 2 / Run manifest | Model | Mask & input | Training | checkpoint rule | test history | splits | provenance | Methods
+R2 | Table 4 – discrimination | Dataset | Model | AUC ± SD | ACC ± SD | N | protocol ID | Results
+R3 | Table 5 – calibration | Dense/sparse N | ECE | ΔECE | ΔECE* | matched gap [CI95%] | support flag | Results
+R4 | Table 6C – interpretation | Sparse present? | L1–L8 PASS? | eligible contrast? | direction | uncertainty | Results
+R5 | Supplementary: 2×2/partitions | Fold | final/full | final/200 | best/full | best/200 | reason missing | Supplementary
+--- TABLE 11 ---
+R0 | GATE D:  Một người phản biện chỉ đọc Abstract → Table 5 → Fig. 3 → Conclusion phải nhận cùng một kết luận, cùng mô hình hợp lệ và cùng giao thức; không còn câu dẫn từ legacy invalid vào primary claim.
+--- TABLE 12 ---
+R0 | Tệp / thư mục gợi ý | Nội dung kiểm chứng bắt buộc
+R1 | 00_manifest/ | environment.yml / requirements.txt; Git SHA; data provenance; checksums; index về file/figure/metric.
+R2 | 01_splits/ | learner ID cho train/valid/test; 4 partition unique; seed ↔ fold mapping; time split separate.
+R3 | 02_training/ | configs DKT/T-KT masked/simpleKT, log validation AUC, final/best checkpoint hash; run commands.
+R4 | 03_predictions/ | learner_id, response_id, item_id, kc_id, sequence_index, y_true, p_hat, fold, model, protocol_id; có lựa chọn ẩn danh.
+R5 | 04_audits/ | L1–L8 unit tests + kết quả; alignment & multi-KC count audit; report L8 after repair.
+R6 | 05_statistics/ | ECE by fold, ECE0, ΔECE*, matched draws, bootstrap draws, size/bin sensitivity.
+R7 | 06_rebuild/ | Một script chạy lại Tables 2–6, A1–A4 và Figures với kiểm tra checksum; bảng nào không rebuild được ghi NOT REPRODUCIBLE.
+R8 | 07_submission/ | Blind manuscript, supplementary blind, cover letter updated, AI/ethics/declaration checklist.
+--- TABLE 13 ---
+R0 | QUY TẮC QUYẾT ĐỊNH:  Chỉ đề nghị submit khi các cổng A, C, D, E đạt và cổng B đã được giải quyết bằng thực nghiệm mới hoặc bằng điều chỉnh phạm vi nghiên cứu trung thực. Không có bảo đảm chấp nhận, nhưng các cổng này loại bỏ những rủi ro phản biện có thể dự đoán được.

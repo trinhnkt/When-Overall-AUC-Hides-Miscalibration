@@ -1,0 +1,9 @@
+dataset,model,partition,protocol_id,checkpoint_rule,history_rule,mask_rule,leakage_status,metric,value,uncertainty,prediction_file,analysis_script,status
+assist2012,dkt,four_partition_archived,BAN_I_FINAL_FULL,final,full,not_recovered,not re-audited on recovered weights,ECE_dense,0.0602,,NOT_RECOVERED,none,LEGACY
+assist2012,dkt,four_partition_archived,BAN_I_FINAL_FULL,final,full,not_recovered,not re-audited on recovered weights,ECE_sparse,0.2333,,NOT_RECOVERED,none,LEGACY
+assist2012,dkt,four_partition_archived,BAN_I_FINAL_FULL,final,full,not_recovered,not re-audited on recovered weights,DeltaECE_star,0.078,,NOT_RECOVERED,none,LEGACY
+assist2012,simplekt,four_partition_archived,BAN_I_FINAL_FULL,final,full,not_recovered,not re-audited on recovered weights,ECE_dense,0.0203,,NOT_RECOVERED,none,LEGACY
+assist2012,simplekt,four_partition_archived,BAN_I_FINAL_FULL,final,full,not_recovered,not re-audited on recovered weights,ECE_sparse,0.0884,,NOT_RECOVERED,none,LEGACY
+junyi,dkt,four_partition_archived,BAN_I_FINAL_FULL,final,full,not_recovered,not re-audited on recovered weights,ECE_dense,0.0389,,NOT_RECOVERED,none,LEGACY
+junyi,dkt,four_partition_archived,BAN_I_FINAL_FULL,final,full,not_recovered,not re-audited on recovered weights,ECE_medium,0.2513,,NOT_RECOVERED,none,LEGACY
+junyi,dkt,four_partition_archived,BAN_I_FINAL_FULL,final,full,not_recovered,not re-audited on recovered weights,DeltaECE_star,0.181,,NOT_RECOVERED,none,LEGACY

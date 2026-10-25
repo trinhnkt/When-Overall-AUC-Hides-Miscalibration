@@ -1,0 +1,6 @@
+dataset,model,partition,protocol_id,checkpoint_rule,history_rule,mask_rule,leakage_status,metric,value,uncertainty,prediction_file,analysis_script,status
+assist2012,tkt_unmasked,archived,UNMASKED_T_KT,final,full,no causal mask,training lookahead; INVALID for a main claim,ECE_dense,0.1136,,NOT_RECOVERED,none,INVALID
+assist2012,tkt_unmasked,archived,UNMASKED_T_KT,final,full,no causal mask,training lookahead; INVALID for a main claim,ECE_sparse,0.228,,NOT_RECOVERED,none,INVALID
+junyi,tkt_unmasked,archived,UNMASKED_T_KT,final,full,no causal mask,training lookahead; INVALID for a main claim,ECE_medium,0.1136,,NOT_RECOVERED,none,INVALID
+junyi,tkt_unmasked,archived,UNMASKED_T_KT,final,full,no causal mask,training lookahead; INVALID for a main claim,ECE_dense,0.0817,,NOT_RECOVERED,none,INVALID
+xes3g5m,any,release,NONE,,,,L8 FAIL,AUC_or_ECE,NOT_EVALUATED,,none,scripts/check_b4_utb.py,NOT_EVALUATED

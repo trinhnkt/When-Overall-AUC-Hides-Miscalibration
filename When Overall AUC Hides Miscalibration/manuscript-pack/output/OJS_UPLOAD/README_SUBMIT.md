@@ -1,15 +1,15 @@
 # IJIET OJS upload (protocol manuscript)
 
 **Journal:** International Journal of Information and Education Technology (www.ijiet.org)  
-**Title:** When Overall AUC Hides Miscalibration - Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components  
+**Title:** When Overall AUC Hides Miscalibration: Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components  
 **Date packed:** 24 October 2026  
-**Length:** named **12 pages**, blind **12 pages**. IJIET: no word limit; every table stays in the single Word file (main Tables 1–6 + Appendix A1–A4). Title 20 pt.
+**Length:** named **10 pages**, blind **10 pages**. IJIET: no word limit; every table stays in the single Word file (main Tables 1–6 + Appendix A1–A4). Title 20 pt.
 
 This is a protocol/diagnostic paper. TSCDA is **not** named. GKT/CL4KT are **not** scored.  
 **T-KT** is a local Transformer reference, not published SimpleKT.
 
 Submission rules (www.ijiet.org): one editable `.doc`/`.pdf` with every figure and
-table embedded; abstract 150–250 words (currently 240); at most 7 keywords (currently 6);
+table embedded; abstract 150–250 words (currently 191); at most 7 keywords (currently 6);
 double-blind review; AI use disclosed (Cursor 3.18.9 with Grok 4.6 and Grok 4.7).
 APC is **800 USD after** acceptance. Authors keep copyright (CC BY 4.0).
 Do not submit through `ijiet.com` — that is a different journal.

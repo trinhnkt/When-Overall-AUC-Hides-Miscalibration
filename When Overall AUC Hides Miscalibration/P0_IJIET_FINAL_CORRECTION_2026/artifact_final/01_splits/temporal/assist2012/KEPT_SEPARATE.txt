@@ -1,0 +1,1 @@
+Temporal files exist at C:\TRINH\When Overall AUC Hides Miscalibration\When Overall AUC Hides Miscalibration\data\processed\assist2012\splits\temporal. They are not one of the four learner partitions.

@@ -51,8 +51,13 @@ def rows_at_n(y, p, n, rng):
     return y[keep], p[keep]
 
 
-def size_matched_contrast(sparse_y, sparse_p, dense_clusters, rng, n_draws=2000, n_bins=15):
-    """Return sparse ECE, median dense ECE at the same N, and the exceedance rate."""
+def size_matched_contrast(
+    sparse_y, sparse_p, dense_clusters, rng, n_draws=2000, n_bins=15, draw_store=None
+):
+    """Return sparse ECE, median dense ECE at the same N, and the exceedance rate.
+
+    draw_store, when given, receives every valid dense ECE in draw order.
+    """
     n = len(sparse_y)
     ece_s = ece(sparse_y, sparse_p, n_bins=n_bins)
     draws = []
@@ -61,8 +66,13 @@ def size_matched_contrast(sparse_y, sparse_p, dense_clusters, rng, n_draws=2000,
         got = dense_at_n(dense_clusters, n, rng)
         if got is None:
             invalid += 1
+            if draw_store is not None:
+                draw_store.append(float("nan"))
             continue
-        draws.append(ece(got[0], got[1], n_bins=n_bins))
+        value = ece(got[0], got[1], n_bins=n_bins)
+        draws.append(value)
+        if draw_store is not None:
+            draw_store.append(value)
     if not draws:
         return {
             "ece_sparse": ece_s,
@@ -104,6 +114,7 @@ def cluster_bootstrap_diff(
     n_boot=2000,
     n_inner=200,
     n_bins=15,
+    replicate_store=None,
 ):
     """95% intervals on one partition for raw ΔECE and the size-matched gap.
 
@@ -119,18 +130,32 @@ def cluster_bootstrap_diff(
     raw, matched = [], []
     empty = 0
     empty_sparse = 0
-    for _ in range(n_boot):
+    for replicate_id in range(n_boot):
         pick = rng.integers(0, n_learners, size=n_learners)
         sparse = _concat_picked(user_sparse, pick)
         dense = _concat_picked(user_dense, pick)
+        record = {
+            "replicate_id": replicate_id,
+            "ece_focal": float("nan"),
+            "ece_dense": float("nan"),
+            "delta_ece": float("nan"),
+            "matched_dense_median": float("nan"),
+            "matched_gap": float("nan"),
+        }
         if sparse is None:
             empty_sparse += 1
             empty += 1
+            if replicate_store is not None:
+                replicate_store.append(record)
             continue
         if dense is None:
             empty += 1
+            if replicate_store is not None:
+                replicate_store.append(record)
             continue
-        raw.append(ece(sparse[0], sparse[1], n_bins=n_bins) - ece(dense[0], dense[1], n_bins=n_bins))
+        ece_s = ece(sparse[0], sparse[1], n_bins=n_bins)
+        ece_d = ece(dense[0], dense[1], n_bins=n_bins)
+        raw.append(ece_s - ece_d)
         clusters = []
         for j in pick:
             y, p = user_dense[int(j)]
@@ -141,6 +166,13 @@ def cluster_bootstrap_diff(
         row = size_matched_contrast(
             sparse[0], sparse[1], clusters, inner, n_draws=n_inner, n_bins=n_bins
         )
+        record["ece_focal"] = ece_s
+        record["ece_dense"] = ece_d
+        record["delta_ece"] = ece_s - ece_d
+        record["matched_dense_median"] = row["ece_dense_at_n_median"]
+        record["matched_gap"] = row["size_matched_diff"]
+        if replicate_store is not None:
+            replicate_store.append(record)
         if np.isnan(row["size_matched_diff"]):
             empty += 1
             continue

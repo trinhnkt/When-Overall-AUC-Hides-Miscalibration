@@ -1,0 +1,40 @@
+Cover letter — International Journal of Information and Education Technology
+
+Manuscript: When Overall AUC Hides Miscalibration: Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components
+Date: 25 October 2026
+
+Dear Editor,
+
+Please consider the enclosed manuscript. It is an evaluation protocol for
+knowledge-tracing probabilities, not a new tracing model.
+
+The primary scores use protocol P0-BV200-15EW on ASSISTments 2012:
+a validation-AUC checkpoint, non-overlapping test windows of at most 200,
+15 equal-width bins, and four unique learner partitions. The primary models
+are DKT and a causally masked Transformer. Their sparse ECE is higher than
+their dense ECE. On fold 0 the size-matched gap has a learner-cluster 95%
+interval that excludes 0. The bias reference ΔECE* is reported separately
+and is not a significance test. The fold-0 interval is not a claim about
+all four partitions.
+
+Junyi Academy has no sparse group. Its DKT contrast is post-hoc. XES3G5M
+is a descriptive audit only: leakage check L8 failed, and no corrected
+model was trained. The paper does not claim that the result is replicated
+on three datasets, and it does not use archived final-checkpoint pairs as
+the current result.
+
+The named file is for the editorial office. Please send reviewers only the
+blind file. There is no separate supplementary PDF. Appendix tables A1, A3,
+and A4 are archived probes and are labeled as such. Table A2 is the DKT
+sensitivity grid.
+
+Ethics and the generative-AI statement are in the manuscript. They still
+require confirmation by every author before submission. This letter does
+not assert that confirmation.
+
+For the editorial office only, the repository is
+https://github.com/trinhnkt/When-Overall-AUC-Hides-Miscalibration.
+That address is not in the blind manuscript.
+
+Sincerely,
+Van-Hau Nguyen

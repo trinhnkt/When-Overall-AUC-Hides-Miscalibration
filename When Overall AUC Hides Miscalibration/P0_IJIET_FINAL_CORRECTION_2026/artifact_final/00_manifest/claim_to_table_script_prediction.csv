@@ -1,0 +1,10 @@
+claim_id,table_or_figure,script,prediction_file,status
+C01,Abstract; Conclusion,scripts/p0_gate_c_export.py,results/C_unique_partition_summary.csv,SUPPORTED
+C02,Abstract; IV.B; Table 5,scripts/p0_gate_c_export.py,P0_IJIET_FINAL_CORRECTION_2026/results/C_unique_partition_summary.csv,SUPPORTED
+C03,Abstract; IV.B; Table 5; Fig. 3,scripts/p0_gate_c_export.py,results/predictions/pred_assist2012_dkt_best_validxchunk_fold0_42.csv.gz,SUPPORTED
+C04,Abstract; IV.B; Table 5,scripts/p0_gate_c_export.py,results/predictions/pred_assist2012_tktc_best_validxchunk_fold0_42.csv.gz,SUPPORTED
+C05,Abstract; IV.B; Table 5; Conclusion,scripts/p0_gate_c_export.py,P0_IJIET_FINAL_CORRECTION_2026/audit/JUNYI_DELTAECESTAR_TRACE.csv,CONDITIONAL
+C06,Abstract; IV.B; V.A; Conclusion; cover letter,tests/test_xes_events.py,P0_IJIET_FINAL_CORRECTION_2026/audit/GATE_B_XES_REPORT.md,SUPPORTED
+C07,IV.D; Table A2,scripts/p0_a5_dkt_assist.py,results/A4_dkt_2x2.csv,SUPPORTED
+C08,III.E; IV.B; V.A; V.D,scripts/p0_gate_c_export.py,src/ece_uncertainty.py,SUPPORTED
+C09,IV.F,none,none,UNSUPPORTED
