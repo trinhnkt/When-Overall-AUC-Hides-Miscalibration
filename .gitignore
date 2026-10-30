@@ -61,6 +61,8 @@ sparse-calibration-kt/manuscript-pack/figures/generate_fig1_a2b.py
 sparse-calibration-kt/manuscript-pack/figures/generate_ijiet_fig1.py
 sparse-calibration-kt/.agents/
 sparse-calibration-kt/Check list/
+When Overall AUC Hides Miscalibration/Check list/
+**/Check list/
 sparse-calibration-kt/_archive/
 # Withdrawn earlier submission: sources, audits, and work logs. Never push.
 sparse-calibration-kt/_withdrawn_private/
