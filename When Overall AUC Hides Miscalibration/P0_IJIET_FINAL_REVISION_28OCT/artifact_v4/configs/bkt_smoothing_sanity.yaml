@@ -1,0 +1,5 @@
+model: BKT
+smoothing_prior:
+  prior_learn: 0.1
+  prior_slip: 0.1
+  prior_guess: 0.2

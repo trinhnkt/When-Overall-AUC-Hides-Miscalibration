@@ -1,0 +1,28 @@
+# BKT Debug / Regularized Configuration
+# ========================================
+# Experimental config attempting to fix pyBKT 1.4.1 EM saturation.
+# STATUS: FAILED — BKT remains degenerate even with fixes below.
+# See: results/reports/bkt_config_audit.md for full analysis.
+
+model_name: bkt_debug
+
+# pyBKT model settings
+num_fits: 3             # Multiple random restarts for EM
+seed: 42
+
+# Parameter initialization (applied via fixed= argument)
+# These fixed values prevent divide-by-zero in M_step.py
+fixed_prior: 0.5        # Fix prior to 0.5 to avoid NaN in init_softcounts
+# Note: even with fixed prior, learns saturates to 1.0 and guesses/slips
+# remain at 0.5 (EM does not converge on these sparse datasets)
+
+# Clipping (applied only for NLL metric computation, not on p_pred)
+nll_clip_eps: 1.0e-7
+
+# Status: DEGENERATE
+# Evidence: 
+#   - learns=1.000 for all KCs (saturated)
+#   - guesses=slips=0.500 (EM did not update, stuck at init)
+#   - p_pred ∈ {0.0, 0.5} only (2 unique values)
+#   - AUC = 0.50 on all datasets
+# Decision: REPLACE WITH IRT 1PL (see configs/irt_1pl.yaml)

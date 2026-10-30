@@ -1,0 +1,76 @@
+commit=4ff6683
+encoding token = 2 * KC + y; token 0 = KC 0 + incorrect
+comparable-scale rule: 0 < norm(row0) and 0.1 <= norm(row0)/median(other rows) <= 10
+DKT class and collate_fn match commit 4ff6683; later edits to train_torch_model only add logs
+embedding: nn.Embedding(n_kcs * 2 + 1, embed_dim, padding_idx=n_kcs * 2)
+collate padding_value: features=0, labels=-1, kcs=-1
+loss mask: labels_flat != -1
+scoring mask: none on token != 0; a row is unscored only when its chunk history is empty
+T0-a embedding.padding_idx=20
+T0-a num_embeddings=21 embedding_dim=64
+T0-a PASS
+T0-b collate features=
+[[0, 2], [4, 0]]
+T0-b collate labels=
+[[1.0, 0.0], [1.0, -1.0]]
+T0-b collate padding feature at short row=0 label=-1.0
+T0-b mask depends on labels != -1; mask=[True, True, True, False]
+T0-b supervised positions whose token is 0=1
+T0-b loss=0.705829381942749 grad_norm_row0=0.01159726083278656
+T0-b PASS
+--- fold=0 seed=42
+checkpoint=runs/a_dkt/assist2012_fold0_seed42_best_valid/model.pt
+prediction=pred_assist2012_dkt_best_validxchunk_fold0_42.csv.gz
+T0-c n_kcs=265 padding_idx=530 norm_row0=8.36084175 median_other=8.17965603 ratio=1.022151 norm_padding_idx_row=0.00000000e+00
+T0-c PASS
+T0-d rows file=534150 test=534150 no_history file=6763 theory=6763 scored file=527387 theory=527387
+T0-d successors_of_token0=690 inside_chunk=690 chunk_boundary=0 missing=0 bad=0
+T0-d replay seq_pos=76 history_len=76 saved_p=0.58588958 model_p=0.58587939 abs_err=1.019e-05
+T0-d replay seq_pos=185 history_len=185 saved_p=0.64559847 model_p=0.64556229 abs_err=3.618e-05
+T0-d replay seq_pos=187 history_len=187 saved_p=0.67850918 model_p=0.67844719 abs_err=6.199e-05
+T0-d replay seq_pos=143 history_len=143 saved_p=0.59155262 model_p=0.59149247 abs_err=6.014e-05
+T0-d replay seq_pos=145 history_len=145 saved_p=0.66342109 model_p=0.66336107 abs_err=6.002e-05
+T0-d PASS
+UT-A4 max_abs_diff_after_20_zero_pads=0.000e+00
+UT-A4 PASS
+--- fold=1 seed=2024
+checkpoint=runs/a_dkt/assist2012_fold1_seed2024_best_valid/model.pt
+prediction=pred_assist2012_dkt_best_validxchunk_fold1_2024.csv.gz
+T0-c n_kcs=265 padding_idx=530 norm_row0=8.32985210 median_other=8.06956196 ratio=1.032256 norm_padding_idx_row=0.00000000e+00
+T0-c PASS
+T0-d rows file=542748 test=542748 no_history file=6799 theory=6799 scored file=535949 theory=535949
+T0-d successors_of_token0=698 inside_chunk=697 chunk_boundary=1 missing=0 bad=0
+T0-d PASS
+--- fold=2 seed=2025
+checkpoint=runs/a_dkt/assist2012_fold2_seed2025_best_valid/model.pt
+prediction=pred_assist2012_dkt_best_validxchunk_fold2_2025.csv.gz
+T0-c n_kcs=265 padding_idx=530 norm_row0=7.27530193 median_other=8.11266804 ratio=0.896783 norm_padding_idx_row=0.00000000e+00
+T0-c PASS
+T0-d rows file=528681 test=528681 no_history file=6743 theory=6743 scored file=521938 theory=521938
+T0-d successors_of_token0=678 inside_chunk=677 chunk_boundary=1 missing=0 bad=0
+T0-d PASS
+--- fold=3 seed=2026
+checkpoint=runs/a_dkt/assist2012_fold3_seed2026_best_valid/model.pt
+prediction=pred_assist2012_dkt_best_validxchunk_fold3_2026.csv.gz
+T0-c n_kcs=265 padding_idx=530 norm_row0=7.66588974 median_other=8.13059139 ratio=0.942845 norm_padding_idx_row=0.00000000e+00
+T0-c PASS
+T0-d rows file=528681 test=528681 no_history file=6743 theory=6743 scored file=521938 theory=521938
+T0-d successors_of_token0=678 inside_chunk=677 chunk_boundary=1 missing=0 bad=0
+T0-d PASS
+--- fold=4 seed=2027
+checkpoint=runs/a_dkt/assist2012_fold4_seed2027_best_valid/model.pt
+prediction=pred_assist2012_dkt_best_validxchunk_fold4_2027.csv.gz
+T0-c n_kcs=265 padding_idx=530 norm_row0=8.87371731 median_other=8.20923424 ratio=1.080943 norm_padding_idx_row=0.00000000e+00
+T0-c PASS
+T0-d rows file=515889 test=515889 no_history file=6717 theory=6717 scored file=509172 theory=509172
+T0-d successors_of_token0=655 inside_chunk=654 chunk_boundary=1 missing=0 bad=0
+T0-d PASS
+====
+T0-a=True padding_idx=20
+T0-b=True grad_norm_row0=0.01159726083278656
+fold=0 seed=42 T0-c=True T0-d=True norm_row0=8.36084175 ratio=1.022151 token0_successors=690
+fold=1 seed=2024 T0-c=True T0-d=True norm_row0=8.32985210 ratio=1.032256 token0_successors=698
+fold=2 seed=2025 T0-c=True T0-d=True norm_row0=7.27530193 ratio=0.896783 token0_successors=678
+fold=3 seed=2026 T0-c=True T0-d=True norm_row0=7.66588974 ratio=0.942845 token0_successors=678
+fold=4 seed=2027 T0-c=True T0-d=True norm_row0=8.87371731 ratio=1.080943 token0_successors=655
+A1=PASS

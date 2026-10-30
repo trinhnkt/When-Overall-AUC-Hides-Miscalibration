@@ -1,0 +1,11 @@
+﻿[Text pasted by the author in chat on 2026-10-30 21:11; no date, letter number, signature or file was provided. Original is in English.]
+
+Dear Research Team,
+
+The Department of Science, Technology and External Relations of Hung Yen University of Technology and Engineering hereby confirms that the information stated below by the Research Team is accurate and complete.
+
+"This study is a secondary analysis of three publicly released, de-identified educational benchmark datasets: ASSISTments 2012, Junyi Academy, and XES3G5M. The records were de-identified by the original dataset providers before release. The research team did not recruit new participants, including students, teachers, or minors, did not contact learners or their parents or guardians, and did not conduct a classroom intervention. The team did not collect new written consent, new log files, or video recordings. The research team did not collect new personal data, access direct personal identifiers, or attempt to re-identify any learner. The Junyi Academy dump is used under the provider's CC BY-NC-SA 4.0 terms. The study is not an industry-partnered data collection, and no EdTech company commissioned the analysis. Under the institutional policy of Hung Yen University of Technology and Engineering, this secondary analysis does not require prospective human-subjects ethics review, and no institutional ethics protocol number applies. Data handling was limited to those publicly released, provider-de-identified records. Where the GDPR, FERPA, or another regional data-protection law applies to the source data and its jurisdiction, this handling is the stated basis of compliance."
+
+Sincerely,
+Department of Science, Technology and External Relations
+Hung Yen University of Technology and Engineering

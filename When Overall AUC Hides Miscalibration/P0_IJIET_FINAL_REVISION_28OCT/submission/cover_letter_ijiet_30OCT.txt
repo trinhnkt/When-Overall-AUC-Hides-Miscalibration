@@ -1,0 +1,26 @@
+Cover letter - International Journal of Information and Education Technology (IJIET)
+
+Manuscript: When Overall AUC Hides Miscalibration: Evaluating Knowledge Tracing on Rarely Practiced Knowledge Components
+Date: 30 October 2026
+
+Dear Editor,
+
+We submit the above manuscript for consideration in IJIET. The paper proposes an evaluation protocol for the probabilities produced by knowledge tracing (KT) models; it does not propose a new KT model.
+
+Adaptive learning systems often act on a KT probability through a fixed mastery threshold, yet KT models are usually compared only by overall AUC. The manuscript shows that this can hide poor calibration on knowledge components that learners rarely practice. On ASSISTments 2012, under one fixed protocol (validation-AUC checkpoint, non-overlapping test windows of at most 200 responses, 15 equal-width bins, four unique learner partitions), the mean expected calibration error of deep knowledge tracing was 0.0982 on sparse and 0.0089 on dense knowledge components. When dense responses were subsampled to the sparse sample size, the gap was 0.0400, with a learner-cluster 95% interval of 0.0170 to 0.0821 on the primary partition. A causally masked Transformer showed the same direction. A conservative small-sample bias reference, which averaged -0.0081 for DKT, is reported separately and is not presented as a significance test.
+
+The scope is deliberately narrow. The primary evidence comes from one dataset. Junyi Academy has no sparse group under the learner-based split and is reported as a post-hoc check. XES3G5M was audited and excluded from model-based results because a leakage check on multi-KC rows (L8) failed; no corrected model was trained, so it contributes only descriptive frequency and estimability results. A threshold analysis (false-advance rate) is reported as a simulated proxy, and its intervals include zero.
+
+Files. The blind manuscript is intended for reviewers; the named version is for the editorial office. All tables are in the main file (Appendix Tables A1-A5), and there is no separate supplementary file. Every reported table value can be recomputed, without retraining, from the prediction files in our reproducibility artifact. The artifact is available to the editorial office and reviewers on request, and a public repository will be released upon acceptance.
+
+Declarations. The authors declare no conflict of interest and received no funding for this work. The study is a secondary analysis of public, de-identified datasets; the authors' institution has confirmed in writing that it does not require prospective ethics review. The use of generative AI tools is described in the manuscript. All authors have approved the submitted version. The manuscript has not been published and is not under consideration elsewhere.
+
+Thank you for considering our work.
+
+Sincerely,
+
+Van-Hau Nguyen (corresponding author)
+Hung Yen University of Technology and Engineering
+haunv@utehy.edu.vn
+
+On behalf of all authors

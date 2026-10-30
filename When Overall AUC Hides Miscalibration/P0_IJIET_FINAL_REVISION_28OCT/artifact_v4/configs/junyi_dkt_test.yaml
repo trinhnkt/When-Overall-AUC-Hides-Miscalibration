@@ -1,0 +1,18 @@
+dataset_name: junyi_dkt_test
+raw_data_path: data/sample/Log_Problem_sample.csv
+processed_data_path: data/processed/junyi_dkt_test/interactions.csv
+user_col: uuid
+item_col: upid
+kc_col: ucid
+timestamp_col: timestamp_TW
+correct_col: is_correct
+min_sequence_length: 2
+split_ratios:
+  train: 0.7
+  valid: 0.1
+  test: 0.2
+bucket_thresholds: [20, 100, 500]
+cold_start_k_values: [5, 10]
+n_bins_ece: 15
+seeds: [42, 2024, 2025]
+baselines: [dkt, simplekt]

@@ -117,3 +117,15 @@ sparse-calibration-kt/manuscript-pack/audit/*
 *.blg
 *.out
 *.editor.txt
+
+# >100 MB prediction exports (GitHub limit); kept locally, listed in artifact MANIFEST.csv
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_CORRECTION_2026/artifact_final/03_predictions/junyi_dkt_fold0_seed42.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_CORRECTION_2026/artifact_final/03_predictions/junyi_dkt_fold1_seed2024.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_CORRECTION_2026/artifact_final/03_predictions/junyi_dkt_fold2_seed2025.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_CORRECTION_2026/artifact_final/03_predictions/junyi_dkt_fold3_seed2026.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_CORRECTION_2026/artifact_final/03_predictions/junyi_dkt_fold4_seed2027.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_REVISION_28OCT/artifact_v4/predictions/pred_junyi_dkt_best_validxchunk_fold0_42.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_REVISION_28OCT/artifact_v4/predictions/pred_junyi_dkt_best_validxchunk_fold1_2024.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_REVISION_28OCT/artifact_v4/predictions/pred_junyi_dkt_best_validxchunk_fold2_2025.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_REVISION_28OCT/artifact_v4/predictions/pred_junyi_dkt_best_validxchunk_fold3_2026.csv.gz
+/When Overall AUC Hides Miscalibration/P0_IJIET_FINAL_REVISION_28OCT/artifact_v4/predictions/pred_junyi_dkt_best_validxchunk_fold4_2027.csv.gz

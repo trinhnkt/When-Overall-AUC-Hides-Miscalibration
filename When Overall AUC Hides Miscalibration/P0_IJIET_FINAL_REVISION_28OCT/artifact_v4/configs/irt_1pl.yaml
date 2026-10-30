@@ -1,0 +1,41 @@
+# IRT 1PL (Rasch Model) Configuration
+# =====================================
+# Classical educational measurement baseline to replace degenerate BKT.
+#
+# Model: P(correct | user u, KC c) = sigmoid(theta_u - beta_c)
+# Fit: train split only (P1-compliant)
+# OOV handling: global-mean prediction for unseen users/KCs
+
+model_name: irt_1pl
+
+# Training hyperparameters
+lr: 0.01            # SGD learning rate
+reg: 0.01           # L2 regularization strength
+epochs: 10          # Number of SGD passes over training data
+batch_size: 512     # Mini-batch size
+
+# Seeds to use (same as DKT/SimpleKT for comparability)
+seeds:
+  - 42
+  - 2024
+  - 2025
+
+# Datasets
+datasets:
+  - assist2012
+  - junyi
+  - xes3g5m
+
+# Splits
+split_modes:
+  - learner_based
+  - temporal
+
+# Output schema (same as BKT/DKT/SimpleKT)
+# Columns: user_id, item_id, kc_id, timestamp, y_true, p_pred, dataset, split_mode, model, seed
+
+# Notes:
+# - IRT 1PL is also known as the Rasch model in educational measurement
+# - theta_u (learner ability) and beta_c (KC difficulty) are fit per-split per-seed
+# - OOV users/KCs at test time get sigmoid(global_log_odds) = global_mean_correctness
+# - This model is selected as BKT replacement due to pyBKT 1.4.1 EM saturation bug

@@ -1,0 +1,19 @@
+# Shared configuration defaults
+dataset_name: default
+raw_data_path: ""
+processed_data_path: ""
+user_col: ""
+item_col: ""
+kc_col: ""
+timestamp_col: ""
+correct_col: ""
+min_sequence_length: 2
+split_ratios:
+  train: 0.7
+  valid: 0.1
+  test: 0.2
+bucket_thresholds: [20, 100, 500]
+cold_start_k_values: [5, 10]
+n_bins_ece: 15
+seeds: [42, 123, 2026]
+baselines: [bkt, dkt, simplekt]

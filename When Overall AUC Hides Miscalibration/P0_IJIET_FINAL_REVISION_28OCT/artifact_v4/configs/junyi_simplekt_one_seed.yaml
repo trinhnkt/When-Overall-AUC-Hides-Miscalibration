@@ -1,0 +1,18 @@
+dataset_name: junyi
+raw_data_path: data/raw/junyi/Log_Problem.csv
+processed_data_path: data/processed/junyi/interactions.csv
+user_col: uuid
+item_col: upid
+kc_col: ucid
+timestamp_col: timestamp_TW
+correct_col: is_correct
+min_sequence_length: 2
+split_ratios:
+  train: 0.7
+  valid: 0.1
+  test: 0.2
+bucket_thresholds: [20, 100, 500]
+cold_start_k_values: [5, 10]
+n_bins_ece: 15
+seeds: [42]
+baselines: [simplekt]

@@ -1,0 +1,15 @@
+Folds 0, 1, 2, 3, and 4 of every prediction file in predictions/ are recomputed from those exports.
+Fold 2 and fold 3 remain one learner partition in the four-partition mean.
+Fold 5 is not in this artifact.
+The slide window is not in this artifact.
+XES3G5M predictions are not in this artifact. Table 4 marks that dataset Not evaluated.
+Junyi simpleKT predictions are not in this artifact.
+Unmasked T-KT predictions are not in this artifact.
+Tables A3 and A4 are recomputed from the ASSISTments DKT and T-KT masked exports (best validation, window 200).
+Table A1 is recomputed from the DKT, T-KT masked, simpleKT, and Junyi DKT exports; its base-rate rows apply
+the constants in predictions/base_rate_constants.csv to the DKT rows of the same partition.
+The G column of Table A5 is recomputed by reproduce_tables.py; the supplementary intervals by partition_intervals.py.
+Tables 6 and 7 need the split files, which are not in this artifact; statistics/recorded/TABLE6_7_CONTEXT.json
+is the recorded output of scripts_28oct/table6_context.py.
+Model weights are not in this artifact. The command does not retrain.
+Archived CSV files in statistics/archived are the earlier summaries. reproduce_tables.py does not read them.

@@ -1,0 +1,9 @@
+The five scored runs are not the seed list inside the YAML files.
+fold 0 init_seed 42
+fold 1 init_seed 2024
+fold 2 init_seed 2025
+fold 3 init_seed 2026
+fold 4 init_seed 2027
+Fold 2 and fold 3 are one learner partition.
+Size-match and fold-0 bootstrap seed: 20261021
+Point estimate draws R = 2000. Bootstrap B = 2000. Inner draws = 200.

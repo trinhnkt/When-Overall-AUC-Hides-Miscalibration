@@ -1,0 +1,18 @@
+dataset_name: xes_bkt_test
+raw_data_path: data/sample/xes3g5m_sample.csv
+processed_data_path: data/processed/xes_bkt_test/interactions.csv
+user_col: user_id
+item_col: question_id
+kc_col: skill_id
+timestamp_col: timestamp
+correct_col: correct
+min_sequence_length: 2
+split_ratios:
+  train: 0.7
+  valid: 0.1
+  test: 0.2
+bucket_thresholds: [20, 100, 500]
+cold_start_k_values: [5, 10]
+n_bins_ece: 15
+seeds: [42, 2024, 2025]
+baselines: [bkt]

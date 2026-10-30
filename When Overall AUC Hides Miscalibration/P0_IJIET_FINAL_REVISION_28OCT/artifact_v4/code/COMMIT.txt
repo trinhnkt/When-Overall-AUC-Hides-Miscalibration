@@ -1,0 +1,8 @@
+4ff66835561e2597a50197dcfb93aba1ec74583b
+2026-10-21 16:03:08 +0700
+Correct the ASSISTments dense item-support median in Table 8.
+The analysis plan in code/docs/analysis_plan_P0_v2.md is the tree at this commit.
+Its parent 46e0208, 2026-10-21 16:02:55 +0700, locked that plan before the supplementary runs.
+src/ece_uncertainty.py in this snapshot keeps a prefix of the concatenated dense rows.
+The published size-matched gap uses a second without-replacement sample of exactly N rows.
+That function is rebuild/published_gap.py. Do not recompute G from the snapshot function.

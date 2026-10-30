@@ -1,0 +1,92 @@
+metric,value,note
+processed_interactions,7953709,data/processed/xes3g5m/interactions.csv
+unique_kc_including_pad,866,nunique kc_id
+unique_real_kcs_excl_-1,865,official 865
+unique_item_including_pad,7653,nunique item_id
+unique_real_items_excl_-1,7652,official 7652
+padding_kc_-1_rows,1540356,kc_id in {-1}
+padding_item_-1_rows,1540356,item_id in {-1}
+pad_kc_and_item_overlap,1540356,both -1
+pad_kc_not_item,0,
+pad_item_not_kc,0,
+valid_nonpadding_rows,6413353,kc_id not -1
+padding_pct_of_processed,19.3665,percent
+pad_correct_mean,0.0,after preprocess 0/1
+n_users,18066,
+learner_based_f0_train_rows,5572247,splits/learner_based/fold_0
+learner_based_f0_train_pad,1078981,splits/learner_based/fold_0
+learner_based_f0_train_pad_all_y0,True,splits/learner_based/fold_0
+learner_based_f0_valid_rows,792317,splits/learner_based/fold_0
+learner_based_f0_valid_pad,154652,splits/learner_based/fold_0
+learner_based_f0_valid_pad_all_y0,True,splits/learner_based/fold_0
+learner_based_f0_test_rows,1589145,splits/learner_based/fold_0
+learner_based_f0_test_pad,306723,splits/learner_based/fold_0
+learner_based_f0_test_pad_all_y0,True,splits/learner_based/fold_0
+learner_based_f1_train_rows,5571145,splits/learner_based/fold_1
+learner_based_f1_train_pad,1080638,splits/learner_based/fold_1
+learner_based_f1_train_pad_all_y0,True,splits/learner_based/fold_1
+learner_based_f1_valid_rows,792436,splits/learner_based/fold_1
+learner_based_f1_valid_pad,153718,splits/learner_based/fold_1
+learner_based_f1_valid_pad_all_y0,True,splits/learner_based/fold_1
+learner_based_f1_test_rows,1590128,splits/learner_based/fold_1
+learner_based_f1_test_pad,306000,splits/learner_based/fold_1
+learner_based_f1_test_pad_all_y0,True,splits/learner_based/fold_1
+temporal_f0_train_rows,5567596,splits/temporal/fold_0
+temporal_f0_train_pad,1540356,splits/temporal/fold_0
+temporal_f0_train_pad_all_y0,True,splits/temporal/fold_0
+temporal_f0_valid_rows,795370,splits/temporal/fold_0
+temporal_f0_valid_pad,0,splits/temporal/fold_0
+temporal_f0_valid_pad_all_y0,,splits/temporal/fold_0
+temporal_f0_test_rows,1590743,splits/temporal/fold_0
+temporal_f0_test_pad,0,splits/temporal/fold_0
+temporal_f0_test_pad_all_y0,,splits/temporal/fold_0
+pred_learner_based_dkt_seed42_file,xes3g5m_learner_based_dkt_seed42_predictions_rerun.csv,results/predictions
+pred_learner_based_dkt_seed42_rows,1589145,results/predictions
+pred_learner_based_dkt_seed42_pad,306723,results/predictions
+pred_learner_based_dkt_seed42_pad_mean_y,0.0,results/predictions
+pred_learner_based_dkt_seed42_pad_mean_p,0.004644256608612962,results/predictions
+pred_learner_based_simplekt_seed42_file,xes3g5m_learner_based_simplekt_seed42_predictions_rerun.csv,results/predictions
+pred_learner_based_simplekt_seed42_rows,1589145,results/predictions
+pred_learner_based_simplekt_seed42_pad,306723,results/predictions
+pred_learner_based_simplekt_seed42_pad_mean_y,0.0,results/predictions
+pred_learner_based_simplekt_seed42_pad_mean_p,0.004644255592241065,results/predictions
+pred_learner_based_irt_1pl_seed42_file,xes3g5m_learner_based_irt_1pl_seed42_predictions_rerun.csv,results/predictions
+pred_learner_based_irt_1pl_seed42_rows,1589145,results/predictions
+pred_learner_based_irt_1pl_seed42_pad,306723,results/predictions
+pred_learner_based_irt_1pl_seed42_pad_mean_y,0.0,results/predictions
+pred_learner_based_irt_1pl_seed42_pad_mean_p,0.6413068192495145,results/predictions
+pred_temporal_dkt_seed42_file,xes3g5m_temporal_dkt_seed42_predictions_rerun.csv,results/predictions
+pred_temporal_dkt_seed42_rows,1590743,results/predictions
+pred_temporal_dkt_seed42_pad,0,results/predictions
+pred_temporal_dkt_seed42_pad_mean_y,,results/predictions
+pred_temporal_dkt_seed42_pad_mean_p,,results/predictions
+pred_temporal_simplekt_seed42_file,xes3g5m_temporal_simplekt_seed42_predictions_rerun.csv,results/predictions
+pred_temporal_simplekt_seed42_rows,1590743,results/predictions
+pred_temporal_simplekt_seed42_pad,0,results/predictions
+pred_temporal_simplekt_seed42_pad_mean_y,,results/predictions
+pred_temporal_simplekt_seed42_pad_mean_p,,results/predictions
+strata_learner_based_f0_kc-1,train=1078981;valid=154652;test=306723;bucket=dense,kc_strata.csv
+strata_learner_based_f1_kc-1,train=1080638;valid=153718;test=306000;bucket=dense,kc_strata.csv
+strata_learner_based_f2_kc-1,train=1079640;valid=154206;test=306510;bucket=dense,kc_strata.csv
+strata_temporal_f0_kc-1,train=1540356;valid=0;test=0;bucket=dense,kc_strata.csv
+a9_elig_-1_rows,1,analysis/a9/kc_eligibility.csv
+a9_elig_-1_eligible_flag,False,"{'kc_id': '-1', 'train_freq': 1078981, 'train_correct_rate': 0.0, 'test_n': 306723, 'test_pos': 0, 'test_neg': 306723, 'difficulty_proxy': 1.0, 'in_official_preds': True, 'eligible': False, 'dataset': 'xes3g5m', 'kc': '-1'}"
+a9_selected_contains_-1,False,selected_kcs.csv
+a9_t500_train_rows,5240403,data/processed/a9/xes3g5m/t500/learner_based/fold_0/train.csv
+a9_t500_train_pad,1078981,others kept in downsample
+tv_sequences,33397,kc_level sequences
+te_sequences,3613,kc_level sequences
+tv_tokens,6679400,kc_level sequences
+te_tokens,1274309,kc_level sequences
+concept_m1,1540356,kc_level sequences
+question_m1,1540356,kc_level sequences
+response_m1,1540356,kc_level sequences
+selectmask_ne_1,1540356,kc_level sequences
+selectmask_present,6679400,kc_level sequences
+overlap_concept_m1_and_smask_ne1,1540356,kc_level sequences
+smask_ne1_not_concept_m1,0,kc_level sequences
+concept_m1_not_smask_ne1,0,kc_level sequences
+is_repeat_nonzero,863807,kc_level sequences
+raw_kc_level_present,True,kc_level sequences
+tv_concept_m1,1540356,kc_level sequences
+te_concept_m1,0,kc_level sequences
